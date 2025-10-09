@@ -196,10 +196,11 @@ def export_csv(model, idx2move, Xb, Xe, y, yv, legal_indices, out_csv, topk, ill
                     top_san[i] = ("?", prob)
                 i += 1
             topkstr = ";".join([f"{u}:{prob*100:.2f}%" for (u,prob) in top_san])
+            legal_moves = ";".join([f"{board.san(m)}" for m in board.legal_moves])
             side_str = "White" if eloside[2]==1.0 else "Black"
             elo_side = (eloside[0] if eloside[2]==1.0 else eloside[1])*1000 + 1000
             elo_opponent = (eloside[0] if eloside[2]==0.0 else eloside[1])*1000 + 1000
-            writer.writerow([idx, board.fen(), side_str, f"{elo_side:.0f}", f"{elo_opponent:.0f}", f"{v:.4f}", true_move_san, true_res, f"{tprob:.6f}", topkstr, legal_example_indices])
+            writer.writerow([idx, board.fen(), side_str, f"{elo_side:.0f}", f"{elo_opponent:.0f}", f"{v:.4f}", true_move_san, true_res, f"{tprob:.6f}", topkstr, legal_moves])
     print("Export completato.")
 
 def infer_from_index(model, idx2move, X_boards, X_eloside, y, y_value, legal_indices, index, topk, illegal):
