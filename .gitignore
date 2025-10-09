@@ -1,0 +1,18 @@
+# Dati grezzi e dump grandi
+*.pgn.zst
+*.pgn
+*.zst
+
+# File temporanei / ambienti
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.env/
+.idea/
+.vscode/
+
+# File di sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,258 @@
+
+extract_positions_from_pgnzst.py:
+  python extract_positions_from_pgnzst.py --pgn_zst lichess_db_standard_rated_2014-07.pgn.zst --out 100k_positions_from_jul2014.csv --max_games 1000000 --max_positions 100000 --sample_every 11     
+  games:   2%|██▌                                                                                                                                                                 | 15350/1000000 [01:38<1:44:56, 156.39it/s]
+  Fatto. Games processati: 15350, posizioni scritte: 100000
+
+----------------------------------------------------------------------------------------------------
+
+csv_to_npz_from_fen:
+  python csv_to_npz_from_fen.py 100k_positions_from_jul2014.csv first_dataset_100k.npz --top_k 100000 --max_examples 100000 --max_rows_vocab 100000   
+  Costruisco vocabolario delle mosse (prima passata)...
+    -> mosse contate: 1876, top_k=1876 salvato in move2idx_generated.json
+  Creo esempi (posizione->mossa) dalla FEN (seconda passata)...
+  Esempi creati: 100000
+  Salvo .npz compresso...
+  Salvato first_dataset_100k.npz
+
+----------------------------------------------------------------------------------------------------
+
+validate_npz_dataset:
+  python validate_npz_dataset.py first_dataset_100k.npz move2idx_generated.json --check_n 100000                                                            
+  Carico dataset: first_dataset_100k.npz
+  Shapes: (100000, 8, 8, 13) (100000, 5) (100000,) (100000,) (100000, 1876)
+  Type: uint8 float32 int32 float32 uint8
+  Numero classi (mosse) = 1876
+  Numero classi = Numero vocabolario
+
+  Controlli base:
+    - side_to_move sample values (unique): [0. 1.]
+    - white elo (min,max): 791.0 2593.0
+    - black elo (min,max): 791.0 2585.0
+    - y_value unique (sample): [0.  0.5 1. ]
+  validating samples: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100000/100000 [00:20<00:00, 4917.04it/s]
+
+  === VALIDATION SUMMARY ===
+  Samples checked: 100000 / 100000
+    - true move not in vocab: 0
+    - samples where true move NOT legal in reconstructed board: 0 (0.00%)
+    - side_to_move mismatches (board.turn vs X_eloside[:,2]): 0  (0.00%)
+
+  Distribuzioni (y_value):
+    y_value=0.0: 46918 samples (overall)
+    y_value=0.5: 5280 samples (overall)
+    y_value=1.0: 47802 samples (overall)
+  OK: tutti gli indici y sono dentro il range [0, 1876).
+
+----------------------------------------------------------------------------------------------------
+
+build_model:
+  python build_model.py first_dataset_100k.npz --model_out chess_elo_model_V0
+  2025-10-09 19:47:36.008067: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  2025-10-09 19:47:42.501037: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  Carico dataset: first_dataset_100k.npz
+  Shapes: (100000, 8, 8, 13) (100000, 5) (100000,) (100000,) (100000, 1876)
+  Numero classi (mosse) = 1876
+  2025-10-09 19:47:48.979032: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+  To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+  Model: "policy_value_net_masked"
+  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃ Layer (type)                  ┃ Output Shape              ┃         Param # ┃ Connected to               ┃
+  ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+  │ board (InputLayer)            │ (None, 8, 8, 13)          │               0 │ -                          │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ conv2d (Conv2D)               │ (None, 8, 8, 64)          │           7,552 │ board[0][0]                │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ batch_normalization           │ (None, 8, 8, 64)          │             256 │ conv2d[0][0]               │
+  │ (BatchNormalization)          │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ max_pooling2d (MaxPooling2D)  │ (None, 4, 4, 64)          │               0 │ batch_normalization[0][0]  │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ conv2d_1 (Conv2D)             │ (None, 4, 4, 128)         │          73,856 │ max_pooling2d[0][0]        │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ batch_normalization_1         │ (None, 4, 4, 128)         │             512 │ conv2d_1[0][0]             │
+  │ (BatchNormalization)          │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ max_pooling2d_1               │ (None, 2, 2, 128)         │               0 │ batch_normalization_1[0][… │
+  │ (MaxPooling2D)                │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ conv2d_2 (Conv2D)             │ (None, 2, 2, 256)         │         295,168 │ max_pooling2d_1[0][0]      │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ eloside (InputLayer)          │ (None, 5)                 │               0 │ -                          │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ legal_indices (InputLayer)    │ (None, 1876)              │               0 │ -                          │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ batch_normalization_2         │ (None, 2, 2, 256)         │           1,024 │ conv2d_2[0][0]             │
+  │ (BatchNormalization)          │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ dense (Dense)                 │ (None, 64)                │             384 │ eloside[0][0]              │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ dense_1 (Dense)               │ (None, 64)                │         120,128 │ legal_indices[0][0]        │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ global_average_pooling2d      │ (None, 256)               │               0 │ batch_normalization_2[0][… │
+  │ (GlobalAveragePooling2D)      │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ batch_normalization_3         │ (None, 64)                │             256 │ dense[0][0]                │
+  │ (BatchNormalization)          │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ batch_normalization_4         │ (None, 64)                │             256 │ dense_1[0][0]              │
+  │ (BatchNormalization)          │                           │                 │                            │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ concatenate (Concatenate)     │ (None, 384)               │               0 │ global_average_pooling2d[… │
+  │                               │                           │                 │ batch_normalization_3[0][… │
+  │                               │                           │                 │ batch_normalization_4[0][… │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ dense_2 (Dense)               │ (None, 512)               │         197,120 │ concatenate[0][0]          │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ dropout (Dropout)             │ (None, 512)               │               0 │ dense_2[0][0]              │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ dense_3 (Dense)               │ (None, 256)               │         131,328 │ dropout[0][0]              │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ subtract (Subtract)           │ (None, 1876)              │               0 │ legal_indices[0][0]        │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ policy_logits (Dense)         │ (None, 1876)              │         482,132 │ dense_3[0][0]              │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ multiply (Multiply)           │ (None, 1876)              │               0 │ subtract[0][0]             │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ add (Add)                     │ (None, 1876)              │               0 │ policy_logits[0][0],       │
+  │                               │                           │                 │ multiply[0][0]             │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ policy (Activation)           │ (None, 1876)              │               0 │ add[0][0]                  │
+  ├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+  │ value (Dense)                 │ (None, 1)                 │             257 │ dense_3[0][0]              │
+  └───────────────────────────────┴───────────────────────────┴─────────────────┴────────────────────────────┘
+  Total params: 1,310,229 (5.00 MB)
+  Trainable params: 1,309,077 (4.99 MB)
+  Non-trainable params: 1,152 (4.50 KB)
+  Modello salvato in: chess_elo_model_V0.keras
+
+----------------------------------------------------------------------------------------------------
+
+train_model:
+  python train_model.py --model chess_elo_model_V0 --dataset first_dataset_100k.npz --save_to chess_elo_model_V1 --epochs 20
+  2025-10-09 19:48:19.683861: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  2025-10-09 19:48:22.686958: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  Carico dataset: first_dataset_100k.npz
+  Shapes: (100000, 8, 8, 13) (100000, 5) (100000,) (100000,) (100000, 1876)
+  Type: uint8 float32 int32 float32 uint8
+  Numero classi (mosse) = 1876
+  Loading model from chess_elo_model_V0.keras ...
+  2025-10-09 19:48:25.884506: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+  To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+  Inizio training: epochs 20 batch_size 32
+  Epoch 1/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 51s 16ms/step - loss: 2.8745 - policy_loss: 2.7581 - policy_policy_acc: 0.2213 - value_loss: 0.2329 - value_value_mse: 0.2329 - val_loss: 2.8249 - val_policy_loss: 2.7101 - val_policy_policy_acc: 0.2359 - val_value_loss: 0.2304 - val_value_value_mse: 0.2305 - learning_rate: 0.0010
+  Epoch 2/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 53s 19ms/step - loss: 2.7672 - policy_loss: 2.6524 - policy_policy_acc: 0.2469 - value_loss: 0.2295 - value_value_mse: 0.2295 - val_loss: 2.7874 - val_policy_loss: 2.6733 - val_policy_policy_acc: 0.2429 - val_value_loss: 0.2292 - val_value_value_mse: 0.2292 - learning_rate: 0.0010
+  Epoch 3/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 65s 23ms/step - loss: 2.6954 - policy_loss: 2.5808 - policy_policy_acc: 0.2614 - value_loss: 0.2291 - value_value_mse: 0.2291 - val_loss: 2.7600 - val_policy_loss: 2.6468 - val_policy_policy_acc: 0.2527 - val_value_loss: 0.2273 - val_value_value_mse: 0.2273 - learning_rate: 0.0010
+  Epoch 4/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 64s 23ms/step - loss: 2.6261 - policy_loss: 2.5121 - policy_policy_acc: 0.2761 - value_loss: 0.2279 - value_value_mse: 0.2279 - val_loss: 2.7849 - val_policy_loss: 2.6718 - val_policy_policy_acc: 0.2546 - val_value_loss: 0.2270 - val_value_value_mse: 0.2270 - learning_rate: 0.0010
+  Epoch 5/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 65s 23ms/step - loss: 2.5566 - policy_loss: 2.4429 - policy_policy_acc: 0.2883 - value_loss: 0.2274 - value_value_mse: 0.2274 - val_loss: 2.7787 - val_policy_loss: 2.6656 - val_policy_policy_acc: 0.2583 - val_value_loss: 0.2266 - val_value_value_mse: 0.2266 - learning_rate: 0.0010
+  Epoch 6/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 63s 22ms/step - loss: 2.4284 - policy_loss: 2.3152 - policy_policy_acc: 0.3145 - value_loss: 0.2264 - value_value_mse: 0.2264 - val_loss: 2.8376 - val_policy_loss: 2.7250 - val_policy_policy_acc: 0.2568 - val_value_loss: 0.2257 - val_value_value_mse: 0.2257 - learning_rate: 5.0000e-04
+  Epoch 7/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 65s 23ms/step - loss: 2.3562 - policy_loss: 2.2432 - policy_policy_acc: 0.3286 - value_loss: 0.2261 - value_value_mse: 0.2260 - val_loss: 2.9033 - val_policy_loss: 2.7906 - val_policy_policy_acc: 0.2573 - val_value_loss: 0.2257 - val_value_value_mse: 0.2257 - learning_rate: 5.0000e-04
+  Epoch 8/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 61s 22ms/step - loss: 2.2607 - policy_loss: 2.1483 - policy_policy_acc: 0.3524 - value_loss: 0.2251 - value_value_mse: 0.2251 - val_loss: 2.9291 - val_policy_loss: 2.8166 - val_policy_policy_acc: 0.2594 - val_value_loss: 0.2254 - val_value_value_mse: 0.2255 - learning_rate: 2.5000e-04
+  Epoch 9/20
+  2813/2813 ━━━━━━━━━━━━━━━━━━━━ 64s 23ms/step - loss: 2.2133 - policy_loss: 2.1009 - policy_policy_acc: 0.3624 - value_loss: 0.2249 - value_value_mse: 0.2249 - val_loss: 3.0059 - val_policy_loss: 2.8934 - val_policy_policy_acc: 0.2610 - val_value_loss: 0.2252 - val_value_value_mse: 0.2253 - learning_rate: 2.5000e-04
+  Modello salvato in: chess_elo_model_V1.keras
+
+----------------------------------------------------------------------------------------------------
+
+lets_try with index:
+  python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --dataset first_dataset_100k.npz --index 100
+  2025-10-09 20:13:14.812823: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  2025-10-09 20:13:17.810643: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  Carico modello: chess_elo_model_V1.keras
+  2025-10-09 20:13:20.142291: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+  To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+  Carico dataset: first_dataset_100k.npz
+  Shapes: (100000, 8, 8, 13) (100000, 5) (100000,) (100000,) (100000, 1876)
+  Type: uint8 float32 int32 float32 uint8
+  Numero classi (mosse) = 1876
+  Index 100  Side to move: Black  elo(side) ~ 1497
+  Value predetto: 0.5389 -> 53.89%
+  True move in data: UCI = h4h3   result = WIN (y_value=1.0)
+  True move SAN (se calcolabile): h3
+  Probabilità assegnata dal modello alla true move (raw): 0.262337 -> 26.23%
+  La true move è presente nelle top-10 predette (rank=1).
+  Top candidate legali (SAN  UCI  prob):
+    h3       h4h3     26.23%
+    Kf2      f3f2     16.76%
+    Kf4      f3f4     13.55%
+    Ke4      f3e4      9.26%
+    Kg3      f3g3      9.06%
+    Kg4      f3g4      7.27%
+    Ke3      f3e3      7.22%
+    Kg2      f3g2      6.05%
+    Ke2      f3e2      4.60%
+    ?        e2e4      0.00%
+
+  Board ascii:
+  . . . . . . . .
+  . . . . . . . .
+  . K . . . . . .
+  . . . . . . . .
+  . . . . . . . p
+  . . . . . k . .
+  . . . . . . . .
+  . . . . . . . .
+  Board fen:
+  8/8/1K6/8/7p/5k2/8/8 b - - 0 61
+  Board legal moves:
+  <LegalMoveGenerator at 0x2579b7a5fd0 (Kg4, Kf4, Ke4, Kg3, Ke3, Kg2, Kf2, Ke2, h3)>
+
+----------------------------------------------------------------------------------------------------
+
+lets_try with csv_export:
+  python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --dataset first_dataset_100k.npz --export_csv 100Examples.csv --start 0 --end 101
+  2025-10-09 20:22:57.086016: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  2025-10-09 20:22:59.751780: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  Carico modello: chess_elo_model_V1.keras
+  2025-10-09 20:23:01.995189: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+  To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+  Carico dataset: first_dataset_100k.npz
+  Shapes: (100000, 8, 8, 13) (100000, 5) (100000,) (100000,) (100000, 1876)
+  Type: uint8 float32 int32 float32 uint8
+  Numero classi (mosse) = 1876
+  Exporting 101 samples to 100Examples.csv (indices 0..100)
+  Export completato.
+
+----------------------------------------------------------------------------------------------------
+
+lets_try with fen:
+  python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --fen "5k2/1p6/2p1b2p/p3PppN/4p1P1/1P5P/P3KP2/8 w - f6 0 34" --elo_w 1399 --elo_b 1666
+  2025-10-09 20:24:01.378771: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  2025-10-09 20:24:04.152104: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+  Carico modello: chess_elo_model_V1.keras
+  2025-10-09 20:24:06.491791: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+  To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+  Side to move: White  elo(side) ~ 1399
+  Value predetto: 0.3394 -> 33.94%
+  Top candidate legali (SAN  UCI  prob):
+    Nf6      h5f6     23.72%
+    gxf5     g4f5     19.25%
+    h4       h3h4      7.23%
+    Nf4      h5f4      7.10%
+    Ng7      h5g7      5.74%
+    Ke3      e2e3      5.42%
+    Ng3      h5g3      5.01%
+    exf6     e5f6      5.01%
+    f3       f2f3      4.84%
+    f4       f2f4      4.22%
+  Board ascii:
+  . . . . . k . .
+  . p . . . . . .
+  . . p . b . . p
+  p . . . P p p N
+  . . . . p . P .
+  . P . . . . . P
+  P . . . K P . .
+  . . . . . . . .
+  Board fen:
+  5k2/1p6/2p1b2p/p3PppN/4p1P1/1P5P/P3KP2/8 w - f6 0 34
+  Board legal moves:
+  <LegalMoveGenerator at 0x207730cfd90 (Ng7, Nf6, Nf4, Ng3, Ke3, Kd2, Kf1, Ke1, Kd1, gxf5, h4, b4, f3, a3, f4, a4, exf6)>
