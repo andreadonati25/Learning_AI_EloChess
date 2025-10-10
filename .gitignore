@@ -12,6 +12,7 @@ venv/
 .env/
 .idea/
 .vscode/
+all_positions_jul2014
 
 # File di sistema
 .DS_Store

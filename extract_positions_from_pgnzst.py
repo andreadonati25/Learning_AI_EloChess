@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-extract_positions_from_pgnzst.py
+extract_positions_from_pgnzst.py (07-2014 1048440 games)
 
 Estrae posizioni (FEN) + metadata + mossa UCI da un archivio PGN .zst (Lichess).
 Salva output in CSV.
@@ -13,7 +13,7 @@ Options of interest:
     --max_games: stop dopo questo numero di partite (None = tutte)
     --max_positions: stop dopo questo numero di righe estratte (None = tutte)
     --sample_every: prendi solo 1 posizione ogni N mosse (default 1 = tutte le mosse)
-    --min_elo: filtra partite dove entrambi i giocatori >= min_elo (default 0)
+    --first_game: first game to read
 """
 import argparse, io
 from tqdm import tqdm
@@ -34,7 +34,7 @@ def open_pgn_stream(pgn_zst_path=None, from_stdin=False):
     dctx = zstd.ZstdDecompressor()
     stream = dctx.stream_reader(fh)
     # stream è binario; chess.pgn.read_game richiede text mode -> wrap in TextIO
-    return io.TextIOWrapper(stream, encoding="utf-8", errors="replace")
+    return stream
 
 def result_to_value(result_tag, side_to_move_is_white):
     """
@@ -66,10 +66,12 @@ def main():
     p.add_argument("--max_games", type=int, default=None, help="max number of games da processare")
     p.add_argument("--max_positions", type=int, default=None, help="max number of positions/esempi da estrarre (globale)")
     p.add_argument("--sample_every", type=int, default=1, help="prendi solo 1 posizione ogni N mosse (1 = tutte)")
-    p.add_argument("--min_elo", type=int, default=0, help="filtra partite con entrambi i giocatori >= min_elo")
+    p.add_argument("--first_game", type=int, default=0, help="first game to read")
     args = p.parse_args()
 
-    src = open_pgn_stream(args.pgn_zst)
+    stream = open_pgn_stream(args.pgn_zst)
+    src = io.TextIOWrapper(stream, encoding="utf-8", errors="replace")
+
     # apri csv
     out_fh = open(args.out, "w", encoding="utf-8", newline="")
     writer = csv.writer(out_fh)
@@ -83,7 +85,7 @@ def main():
     pgn_io = src #if args.from_pgn_stream else src
     # if it's binary TextIOWrapper we can use it directly
     # loop through games
-    pbar_games = tqdm(total=args.max_games, desc="games", disable=False) if args.max_games else None
+    pbar_games = tqdm(total=args.max_games + args.first_game, desc="games", disable=False) if args.max_games else None
     while True:
         try:
             game = chess.pgn.read_game(pgn_io)
@@ -93,32 +95,19 @@ def main():
         if game is None:
             break
         games_proc += 1
+
         if pbar_games:
             pbar_games.update(1)
+
+        if args.first_game > games_proc:
+            continue
+
         # read headers
         white = game.headers.get("White", "")
         black = game.headers.get("Black", "")
         white_elo = sanitize_elo(game.headers.get("WhiteElo", ""))
         black_elo = sanitize_elo(game.headers.get("BlackElo", ""))
         result_tag = game.headers.get("Result", "")
-        
-        if white_elo is not None and black_elo is not None:
-            if (white_elo < args.min_elo) or (black_elo < args.min_elo):
-                # skip partita
-                pass_flag = True
-            else:
-                pass_flag = False
-        else:
-            pass_flag = False
-
-        if pass_flag:
-            # skip this game
-            if args.max_games and games_proc >= args.max_games:
-                break
-            if args.max_games is None:
-                continue
-            else:
-                continue
 
         # iterate moves
         board = game.board()  # initial board
@@ -141,7 +130,7 @@ def main():
 
             # compute y_value (from point of view of side_to_move BEFORE the move)
             y_val = result_to_value(result_tag, side_to_move_is_white)
-
+                
             # if sampling (sample_every), decide whether to output
             if (ply % args.sample_every) == 0:
                 # choose elo of side to move (normalized later)
@@ -158,8 +147,8 @@ def main():
 
                 # write CSV row
                 writer.writerow([games_proc, white, black, white_elo or "", black_elo or "",
-                                 result_tag, ply, fen_before, int(side_to_move_is_white),
-                                 elo_side_norm, uci, san, y_val])
+                                result_tag, ply, fen_before, int(side_to_move_is_white),
+                                elo_side_norm, uci, san, y_val])
                 positions_written += 1
 
                 if args.max_positions and positions_written >= args.max_positions:
@@ -172,13 +161,13 @@ def main():
 
         if args.max_positions and positions_written >= args.max_positions:
             break
-        if args.max_games and games_proc >= args.max_games:
+        if args.max_games and games_proc >= args.max_games + args.first_game - 1:
             break
 
     if pbar_games:
         pbar_games.close()
     out_fh.close()
-    print(f"Fatto. Games processati: {games_proc}, posizioni scritte: {positions_written}")
+    print(f"Fatto. Games processati: {games_proc - args.first_game + 1}, posizioni scritte: {positions_written}")
 
 if __name__ == "__main__":
     main()

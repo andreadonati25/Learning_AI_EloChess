@@ -74,7 +74,7 @@ def main():
     parser.add_argument("--monitor", default="val_policy_loss")
     args = parser.parse_args()
 
-    X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset)
+    X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset, mmap_mode='r')
     N = X_boards.shape[0]
 
     # Load model
