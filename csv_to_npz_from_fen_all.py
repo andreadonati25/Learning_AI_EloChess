@@ -10,7 +10,7 @@ Legge CSV con colonne minime:
   - dataset .npz con X_boards, X_eloside, y, y_value, legal_indices
 
 Usage example:
-    python csv_to_npz_from_fen.py 1Mpositions_from1Mgames_jul2014.csv first_dataset_100k.npz --top_k 1000000 --max_examples 100000 --max_rows_vocab 1000000
+    python csv_to_npz_from_fen_all.py all_positions_jul2014/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500
 """
 
 import argparse, json
@@ -18,6 +18,7 @@ from collections import Counter
 import numpy as np
 import pandas as pd
 import chess
+import os
 
 def board_to_planes(board):
     piece_map = board.piece_map()
@@ -154,24 +155,41 @@ def main():
     parser.add_argument("csv_in", help="CSV input")
     parser.add_argument("out_npz", help="Output .npz")
     parser.add_argument("--max_rows_vocab", type=int, default=100000, help="numero righe usate per costruire vocabolario")
-    parser.add_argument("--top_k", type=int, default=3000, help="top K mosse per vocabolario")
+    parser.add_argument("--top_k", type=int, default=1968, help="top K mosse per vocabolario") # max: 1968
     parser.add_argument("--max_examples", type=int, default=None, help="limite totale esempi salvati")
+    parser.add_argument("--game_split", type=int, default=None, help="number of games in ogni file in input")
+    parser.add_argument("--max_games", type=int, default=None, help="max number of games in totale")
     args = parser.parse_args()
 
-    print("Costruisco vocabolario delle mosse (prima passata)...")
-    cnt = build_move_vocab(args.csv_in, max_rows=args.max_rows_vocab)
-    most_common = cnt.most_common(args.top_k)
-    move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
-    with open("move2idx_generated.json","w",encoding="utf-8") as f:
-        json.dump(move2idx,f,indent=2)
-    print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
+    base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014/positions_jul2014
+    base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
 
-    print("Creo esempi (posizione->mossa) dalla FEN (seconda passata)...")
-    X_boards, X_eloside, y, y_value, legal_indices = create_dataset_from_csv(args.csv_in, move2idx, indices_size=len(cnt), max_examples=args.max_examples)
-    print(f"Esempi creati: {len(y)}")
-    print("Salvo .npz compresso...")
-    np.savez_compressed(args.out_npz, X_boards=X_boards, X_eloside=X_eloside, y=y, y_value=y_value, legal_indices=legal_indices)
-    print(f"Salvato {args.out_npz}")
+    start = 1
+    batch = 0
+    while start <= args.max_games:
+        end = min(start + args.game_split - 1, args.max_games)
+        in_file = f"{base_in}_game{start}_game{end}_{os.path.basename(base_out)}.csv"
+        out_file = f"{base_out}_game{start}_game{end}_{os.path.basename(base_out)}.npz"
+
+        # Vocabolario solo con il primo file.
+        if start == 1:
+            print("Costruisco vocabolario delle mosse (prima passata)...")
+            cnt = build_move_vocab(in_file, max_rows=args.max_rows_vocab)
+            most_common = cnt.most_common(args.top_k)
+            move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
+            with open("move2idx_generated.json","w",encoding="utf-8") as f:
+                json.dump(move2idx,f,indent=2)
+            print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
+
+        print("Creo esempi (posizione->mossa) dalla FEN (seconda passata)...")
+        X_boards, X_eloside, y, y_value, legal_indices = create_dataset_from_csv(in_file, move2idx, indices_size=len(cnt), max_examples=args.max_examples)
+        print(f"Esempi creati: {len(y)}")
+        print("Salvo .npz compresso...")
+        np.savez_compressed(out_file, X_boards=X_boards, X_eloside=X_eloside, y=y, y_value=y_value, legal_indices=legal_indices)
+        print(f"Salvato {out_file}")
+
+        start += args.game_split
+        batch += 1
 
 if __name__ == "__main__":
     main()
