@@ -159,20 +159,21 @@ def main():
     parser.add_argument("--max_examples", type=int, default=None, help="limite totale esempi salvati")
     parser.add_argument("--game_split", type=int, default=None, help="number of games in ogni file in input")
     parser.add_argument("--max_games", type=int, default=None, help="max number of games in totale")
+    parser.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
     args = parser.parse_args()
 
     base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
 
     start = 1
-    batch = 0
-    while start <= args.max_games:
+    batch = 1
+    while batch <= args.max_file:
         end = min(start + args.game_split - 1, args.max_games)
-        in_file = f"{base_in}_game{start}_game{end}_{os.path.basename(base_out)}.csv"
-        out_file = f"{base_out}_game{start}_game{end}_{os.path.basename(base_out)}.npz"
+        in_file = f"{base_in}_game{start}_game{end}.csv"
+        out_file = f"{base_out}_game{start}_game{end}.npz"
 
         # Vocabolario solo con il primo file.
-        if start == 1:
+        if batch == 1:
             print("Costruisco vocabolario delle mosse (prima passata)...")
             cnt = build_move_vocab(in_file, max_rows=args.max_rows_vocab)
             most_common = cnt.most_common(args.top_k)

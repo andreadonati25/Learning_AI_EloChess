@@ -6,7 +6,7 @@ Estrae posizioni (FEN) + metadata + mossa UCI da un archivio PGN .zst (Lichess).
 Salva output in CSV.
 
 Usage example:
-    python extract_positions_from_pgnzst_all.py --pgn_zst lichess_db_standard_rated_2014-07.pgn.zst --out all_positions_jul2014/positions_jul2014.csv --max_games 1048440 --game_split 1500
+    python extract_positions_from_pgnzst_all.py --pgn_zst lichess_db_standard_rated_2014-07.pgn.zst --out all_positions_jul2014_csv/positions_jul2014.csv --max_games 1048440 --game_split 1500
 
 Options of interest:
     --max_games: stop dopo questo numero di partite (None = tutte)
@@ -74,7 +74,7 @@ def main():
     batch = 0
     while start <= args.max_games:
         end = min(start + args.game_split - 1, args.max_games)
-        out_file = f"{base_out}_game{start}_game{end}_{os.path.basename(base_out)}.csv"
+        out_file = f"{base_out}_game{start}_game{end}.csv"
 
         cmd = [
             "python",
