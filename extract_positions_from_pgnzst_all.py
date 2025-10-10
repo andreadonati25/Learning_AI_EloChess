@@ -165,7 +165,7 @@ def main():
                 node = node.variations[0]
                 ply += 1
 
-            if args.max_games and games_proc >= args.game_split:
+            if games_proc >= args.game_split:
                 break
 
         if pbar_games:
