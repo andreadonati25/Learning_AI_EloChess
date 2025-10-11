@@ -11,6 +11,8 @@ Legge CSV con colonne minime:
 
 Usage example:
     python csv_to_npz_from_fen_all.py all_positions_jul2014_csv/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --voc_file positions_for_vocabulary_jul2014.csv --max_games 1048440 --game_split 1500
+
+    with --voc_file positions_for_vocabulary_jul2014.csv 1929 / 1968 moves
 """
 
 import argparse, json
@@ -155,7 +157,7 @@ def main():
     parser.add_argument("csv_in", help="CSV input")
     parser.add_argument("out_npz", help="Output .npz")
     parser.add_argument("--voc_file", required=True, help="file per move2idx")
-    parser.add_argument("--max_rows_vocab", type=int, default=100000, help="numero righe usate per costruire vocabolario")
+    parser.add_argument("--max_rows_vocab", type=int, default=10000000, help="numero righe usate per costruire vocabolario")
     parser.add_argument("--top_k", type=int, default=1968, help="top K mosse per vocabolario") # max: 1968
     parser.add_argument("--max_examples", type=int, default=None, help="limite totale esempi salvati")
     parser.add_argument("--game_split", type=int, default=None, help="number of games in ogni file in input")
@@ -171,7 +173,6 @@ def main():
     with open("move2idx_generated.json","w",encoding="utf-8") as f:
         json.dump(move2idx,f,indent=2)
     print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
-
 
     base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
