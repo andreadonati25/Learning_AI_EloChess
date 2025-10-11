@@ -10,7 +10,7 @@ Legge CSV con colonne minime:
   - dataset .npz con X_boards, X_eloside, y, y_value, legal_indices
 
 Usage example:
-    python csv_to_npz_from_fen_all.py all_positions_jul2014_csv/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --voc_file positions_for_vocabulary_jul2014.csv --max_games 1048440 --game_split 1500
+    python csv_to_npz_from_fen_all.py all_positions_jul2014_csv/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --voc_file positions_for_vocabulary_jul2014.csv --max_games 1048440 --game_split 1500 --max_file 699
 
     with --voc_file positions_for_vocabulary_jul2014.csv 1929 / 1968 moves
 """
