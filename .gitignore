@@ -14,6 +14,8 @@ venv/
 .vscode/
 all_positions_jul2014_csv
 all_positions_jul2014_npz
+a_lot_positions_jul2014.csv
+positions_for_vocabulary_jul2014.csv
 model_versions
 
 # File di sistema

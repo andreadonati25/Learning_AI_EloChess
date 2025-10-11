@@ -10,7 +10,7 @@ Legge CSV con colonne minime:
   - dataset .npz con X_boards, X_eloside, y, y_value, legal_indices
 
 Usage example:
-    python csv_to_npz_from_fen_all.py all_positions_jul2014/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500
+    python csv_to_npz_from_fen_all.py all_positions_jul2014_csv/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --voc_file positions_for_vocabulary_jul2014.csv --max_games 1048440 --game_split 1500
 """
 
 import argparse, json
@@ -154,6 +154,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_in", help="CSV input")
     parser.add_argument("out_npz", help="Output .npz")
+    parser.add_argument("--voc_file", required=True, help="file per move2idx")
     parser.add_argument("--max_rows_vocab", type=int, default=100000, help="numero righe usate per costruire vocabolario")
     parser.add_argument("--top_k", type=int, default=1968, help="top K mosse per vocabolario") # max: 1968
     parser.add_argument("--max_examples", type=int, default=None, help="limite totale esempi salvati")
@@ -161,6 +162,16 @@ def main():
     parser.add_argument("--max_games", type=int, default=None, help="max number of games in totale")
     parser.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
     args = parser.parse_args()
+
+    print("Costruisco vocabolario delle mosse (prima passata)...")
+    print(f"da {args.voc_file}")
+    cnt = build_move_vocab(args.voc_file, max_rows=args.max_rows_vocab)
+    most_common = cnt.most_common(args.top_k)
+    move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
+    with open("move2idx_generated.json","w",encoding="utf-8") as f:
+        json.dump(move2idx,f,indent=2)
+    print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
+
 
     base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
@@ -172,15 +183,14 @@ def main():
         in_file = f"{base_in}_game{start}_game{end}.csv"
         out_file = f"{base_out}_game{start}_game{end}.npz"
 
-        # Vocabolario solo con il primo file.
-        if batch == 1:
-            print("Costruisco vocabolario delle mosse (prima passata)...")
-            cnt = build_move_vocab(in_file, max_rows=args.max_rows_vocab)
-            most_common = cnt.most_common(args.top_k)
-            move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
-            with open("move2idx_generated.json","w",encoding="utf-8") as f:
-                json.dump(move2idx,f,indent=2)
-            print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
+        cmd = [
+            "python",
+            "csv_to_npz_from_fen.py",
+            in_file,
+            out_file,
+        ]
+
+        print(f"[Batch {batch}] Running: {' '.join(cmd)}")
 
         print("Creo esempi (posizione->mossa) dalla FEN (seconda passata)...")
         X_boards, X_eloside, y, y_value, legal_indices = create_dataset_from_csv(in_file, move2idx, indices_size=len(cnt), max_examples=args.max_examples)
