@@ -174,7 +174,7 @@ def main():
         json.dump(move2idx,f,indent=2)
     print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
 
-    base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014/positions_jul2014
+    base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014_csv/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
 
     start = 1

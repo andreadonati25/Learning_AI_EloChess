@@ -68,7 +68,7 @@ def main():
     stream = open_pgn_stream(args.pgn_zst)
     src = io.TextIOWrapper(stream, encoding="utf-8", errors="replace")
 
-    base_out = os.path.splitext(args.out)[0]  # es: all_positions_jul2014/positions_jul2014
+    base_out = os.path.splitext(args.out)[0]  # es: all_positions_jul2014_csv/positions_jul2014
 
     start = 1
     batch = 0
