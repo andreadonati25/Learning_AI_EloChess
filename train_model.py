@@ -5,12 +5,14 @@ train_model.py
 Funzioni di allenamento per il modello policy+value usato nel progetto scacchi.
 
  Usage example:
-    python train_model.py --model chess_elo_model_V0 --dataset first_dataset_100k.npz --save_to chess_elo_model_V1 --epochs 20 
+    python train_model.py --model chess_elo_model_V0 --dataset all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --save_to model_versions/chess_elo_model_V1 --epochs 20
 """
 
 import argparse
 import numpy as np
 import tensorflow as tf
+import os
+from datetime import datetime
 
 def load_npz_dataset(npz_path):
     print("Carico dataset:", npz_path)
@@ -27,6 +29,25 @@ def load_npz_dataset(npz_path):
     num_classes = len(legal_indices[0])
     print("Numero classi (mosse) =", num_classes)
     return X_boards, X_eloside, y, y_value, num_classes, legal_indices 
+
+def compute_bests(history_dict):
+    bests = {}
+    for k, vals in history_dict.items():
+        try:
+            arr = np.array(vals, dtype=float)
+        except Exception:
+            continue
+        if arr.size == 0:
+            continue
+        kl = k.lower()
+        # regola semplice: per metriche "loss"/"mse"/"mae" scegli il minimo, altrimenti il massimo
+        if ("loss" in kl) or ("mse" in kl) or ("mae" in kl):
+            idx = int(np.argmin(arr))
+            bests[k] = {"best_value": float(arr[idx]), "epoch": int(idx+1), "mode": "min"}
+        else:
+            idx = int(np.argmax(arr))
+            bests[k] = {"best_value": float(arr[idx]), "epoch": int(idx+1), "mode": "max"}
+    return bests
 
 def make_tf_dataset(X_boards, X_eloside, y, y_value, X_legal_indices, batch_size=32, shuffle=True, alpha=1.0):
     N = X_boards.shape[0]
@@ -74,7 +95,7 @@ def main():
     parser.add_argument("--monitor", default="val_policy_loss")
     args = parser.parse_args()
 
-    X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset, mmap_mode='r')
+    X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset)
     N = X_boards.shape[0]
 
     # Load model
@@ -107,8 +128,49 @@ def main():
     history = model.fit(train_ds, validation_data=val_ds, epochs=args.epochs, callbacks=cb, verbose=1)
 
     model.save(args.save_to + ".keras")
-    np.save(args.save_to + "_history.npy", history.history)
     print("Modello salvato in:", args.save_to + ".keras")
+
+    # prepara la entry di history da appendere (includo timestamp e alcuni argomenti utili)
+    entry = {
+        "timestamp_utc": datetime.now().isoformat() + "Z",
+        # salvo gli args (tutti tranne save_to per evitare ridondanza)
+        "args": {k: v for k, v in vars(args).items() if k not in ("save_to",)},
+        "history": history.history,
+        "best": compute_bests(history.history)
+    }
+
+    history_path = args.save_to + "_history.npy"
+
+    # se esiste, caricalo e appendi; altrimenti crea lista nuova
+    if os.path.exists(history_path):
+        try:
+            existing = np.load(history_path, allow_pickle=True)
+            # converti il contenuto caricato in una lista python
+            if isinstance(existing, np.ndarray):
+                existing_py = existing.tolist()
+            else:
+                existing_py = existing
+
+            # se era un singolo dict (vecchio formato), fallo diventare lista
+            if isinstance(existing_py, dict):
+                master_list = [existing_py]
+            elif isinstance(existing_py, list):
+                master_list = existing_py
+            else:
+                # fallback: mettilo come singolo elemento in lista
+                master_list = [existing_py]
+        except Exception as e:
+            # in caso di problemi di lettura, crea nuova lista ma segnala l'errore
+            print("Warning: impossibile leggere history esistente:", e)
+            master_list = []
+    else:
+        master_list = []
+
+    # aggiungi la entry corrente e risalva
+    master_list.append(entry)
+    np.save(history_path, master_list, allow_pickle=True)
+    print(f"History aggiornata e salvata in: {history_path}  (entries totale = {len(master_list)})")
+
 
 if __name__ == "__main__":
     main()

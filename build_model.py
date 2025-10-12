@@ -9,7 +9,7 @@ Funzioni principali:
  - compile_model(...)  -> compila il modello con optimizer, loss e metriche
 
  Usage example:
-    python build_model.py first_dataset_100k.npz --model_out chess_elo_model_V0
+    python build_model.py all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --model_out chess_elo_model_V0
 """
 
 import tensorflow as tf

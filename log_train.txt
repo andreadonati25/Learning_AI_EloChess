@@ -1,0 +1,90 @@
+Time: 2025-10-12T17:31:03.592148, Start:1, End:1500, Version:0
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V0 --dataset all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --save_to model_versions/chess_elo_model_V1 --epochs 10
+
+Time: 2025-10-12T17:42:19.330060, Start:1501, End:3000, Version:1.0
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V1 --dataset all_positions_jul2014_npz/positions_jul2014_game1501_game3000.npz --save_to model_versions/chess_elo_model_V2 --epochs 10
+
+Time: 2025-10-12T17:52:17.051743, Start:3001, End:4500, Version:2.0
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V2 --dataset all_positions_jul2014_npz/positions_jul2014_game3001_game4500.npz --save_to model_versions/chess_elo_model_V3 --epochs 10
+
+Time: 2025-10-12T18:02:43.467984, Start:4501, End:6000, Version:3.0
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V3 --dataset all_positions_jul2014_npz/positions_jul2014_game4501_game6000.npz --save_to model_versions/chess_elo_model_V4 --epochs 10
+
+Time: 2025-10-12T18:15:00.753635, Start:6001, End:7500, Version:4.0
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V4 --dataset all_positions_jul2014_npz/positions_jul2014_game6001_game7500.npz --save_to model_versions/chess_elo_model_V5 --epochs 10
+
+Time: 2025-10-12T18:29:45.364563, Start:7501, End:9000, Version:5.0
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V5 --dataset all_positions_jul2014_npz/positions_jul2014_game7501_game9000.npz --save_to model_versions/chess_elo_model_V6 --epochs 10
+
+Time: 2025-10-12T18:39:43.200548, Start:9001, End:10500, Version:6.0
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V6 --dataset all_positions_jul2014_npz/positions_jul2014_game9001_game10500.npz --save_to model_versions/chess_elo_model_V7 --epochs 10
+
+Time: 2025-10-12T18:51:19.214583, Start:10501, End:12000, Version:7.0
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V7 --dataset all_positions_jul2014_npz/positions_jul2014_game10501_game12000.npz --save_to model_versions/chess_elo_model_V8 --epochs 10
+
+Time: 2025-10-12T19:02:27.837380, Start:12001, End:13500, Version:8.0
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V8 --dataset all_positions_jul2014_npz/positions_jul2014_game12001_game13500.npz --save_to model_versions/chess_elo_model_V9 --epochs 10
+
+Time: 2025-10-12T19:12:29.623669, Start:13501, End:15000, Version:9.0
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V9 --dataset all_positions_jul2014_npz/positions_jul2014_game13501_game15000.npz --save_to model_versions/chess_elo_model_V10 --epochs 10
+
+Time: 2025-10-12T19:33:06.698167, Start:15001, End:16500, Version:10
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V10 --dataset all_positions_jul2014_npz/positions_jul2014_game15001_game16500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10
+
+Time: 2025-10-12T19:40:34.582630, Start:16501, End:18000, Version:11.0
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game16501_game18000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10
+
+Time: 2025-10-12T19:50:14.171573, Start:18001, End:19500, Version:12.0
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game18001_game19500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10
+
+Time: 2025-10-12T19:59:52.875207, Start:19501, End:21000, Version:13.0
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game19501_game21000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10
+
+Time: 2025-10-12T20:09:32.825107, Start:21001, End:22500, Version:14.0
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game21001_game22500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10
+
+Time: 2025-10-12T20:19:23.829875, Start:22501, End:24000, Version:15.0
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game22501_game24000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10
+
+Time: 2025-10-12T20:28:52.311875, Start:24001, End:25500, Version:16.0
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game24001_game25500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10
+
+Time: 2025-10-12T20:38:12.182498, Start:25501, End:27000, Version:17.0
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game25501_game27000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10
+
+Time: 2025-10-12T20:47:35.813314, Start:27001, End:28500, Version:18.0
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game27001_game28500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10
+
+Time: 2025-10-12T20:57:00.195051, Start:28501, End:30000, Version:19.0
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game28501_game30000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10
+
+Time: 2025-10-12T21:06:29.688332, Start:30001, End:31500, Version:20.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game30001_game31500.npz --save_to model_versions/chess_elo_model_V21 --epochs 10
+
+Time: 2025-10-12T21:15:42.811944, Start:31501, End:33000, Version:21.0
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game31501_game33000.npz --save_to model_versions/chess_elo_model_V22 --epochs 10
+
+Time: 2025-10-12T21:25:08.339355, Start:33001, End:34500, Version:22.0
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game33001_game34500.npz --save_to model_versions/chess_elo_model_V23 --epochs 10
+
+Time: 2025-10-12T21:34:39.051024, Start:34501, End:36000, Version:23.0
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game34501_game36000.npz --save_to model_versions/chess_elo_model_V24 --epochs 10
+
+Time: 2025-10-12T21:44:05.371011, Start:36001, End:37500, Version:24.0
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game36001_game37500.npz --save_to model_versions/chess_elo_model_V25 --epochs 10
+
+Time: 2025-10-12T21:53:27.591763, Start:37501, End:39000, Version:25.0
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game37501_game39000.npz --save_to model_versions/chess_elo_model_V26 --epochs 10
+
+Time: 2025-10-12T22:02:44.043875, Start:39001, End:40500, Version:26.0
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game39001_game40500.npz --save_to model_versions/chess_elo_model_V27 --epochs 10
+
+Time: 2025-10-12T22:11:57.189391, Start:40501, End:42000, Version:27.0
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game40501_game42000.npz --save_to model_versions/chess_elo_model_V28 --epochs 10
+
+Time: 2025-10-12T22:20:45.768680, Start:42001, End:43500, Version:28.0
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game42001_game43500.npz --save_to model_versions/chess_elo_model_V29 --epochs 10
+
+Time: 2025-10-12T22:29:11.764267, Start:43501, End:45000, Version:29.0
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game43501_game45000.npz --save_to model_versions/chess_elo_model_V30 --epochs 10
+

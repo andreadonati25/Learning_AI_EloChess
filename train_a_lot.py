@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-    python train_a_lot.py --model chess_elo_model_V0 --dataset first_dataset_100k.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 20 --start 1
+    python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 20 --start 1
 """
 import argparse
 import subprocess
 import os
-
+from datetime import datetime
 
 def main():
     p = argparse.ArgumentParser()
@@ -16,33 +16,40 @@ def main():
     p.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
     p.add_argument("--epochs", type=int, default=1, help="Max number of epochs to train for each file")
     p.add_argument("--start", type=int, default=1, help="File number to start")
+    p.add_argument("--starting_version", type=int, default=0)
     args = p.parse_args()
 
-    base_dataset = os.path.splitext(args.dataset)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
+    base_dataset = os.path.splitext(args.dataset)[0]  # es: all_positions_jul2014_npz/positions_jul2014
 
     start = 1 + (args.start - 1) * args.game_split
     batch = 1
-    version = 1
+    version = args.starting_version
+    model_old = f"{args.model}_V{version}"
     while batch <= args.max_file:
         end = min(start + args.game_split - 1, args.max_games)
         dataset_step = f"{base_dataset}_game{start}_game{end}.npz"
-        model_save_to_step = f"model_versions/{args.model}_V{version}"
+        model_save_to_step = f"{args.model}_V{int(version + 1)}"
 
         cmd = [
             "python",
             "train_model.py",
-            "--model", args.model,
+            "--model", model_old,
             "--dataset", dataset_step,
             "--save_to", model_save_to_step,
             "--epochs", str(args.epochs),
         ]
 
-        print(f"[Batch {batch}] Running: {' '.join(cmd)}")
+        time = datetime.now().isoformat()
+        tot_com = f"Time: {time}, Start:{start}, End:{end}, Version:{version}\n[Batch {batch}] Running: {' '.join(cmd)}"
+        print(tot_com)
+        with open("log_train.txt", "a", encoding="utf-8") as f:
+            f.write(f"{tot_com}\n\n")
         subprocess.run(cmd, check=True)
 
+        model_old = model_save_to_step
+        version = batch / 1 + args.starting_version
         start += args.game_split
         batch += 1
-        version = batch / 10 + 1
 
 
 if __name__ == "__main__":
