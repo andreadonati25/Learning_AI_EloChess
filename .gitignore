@@ -17,6 +17,7 @@ all_positions_jul2014_npz
 a_lot_positions_jul2014.csv
 positions_for_vocabulary_jul2014.csv
 model_versions
+model_versions_V2
 
 # File di sistema
 .DS_Store

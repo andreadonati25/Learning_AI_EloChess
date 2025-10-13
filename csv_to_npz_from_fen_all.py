@@ -156,7 +156,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_in", help="CSV input")
     parser.add_argument("out_npz", help="Output .npz")
-    parser.add_argument("--voc_file", required=True, help="file per move2idx")
+    parser.add_argument("--json", default=None, help="vocabulary")
+    parser.add_argument("--voc_file", help="file per move2idx")
     parser.add_argument("--max_rows_vocab", type=int, default=10000000, help="numero righe usate per costruire vocabolario")
     parser.add_argument("--top_k", type=int, default=1968, help="top K mosse per vocabolario") # max: 1968
     parser.add_argument("--max_examples", type=int, default=None, help="limite totale esempi salvati")
@@ -165,14 +166,18 @@ def main():
     parser.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
     args = parser.parse_args()
 
-    print("Costruisco vocabolario delle mosse (prima passata)...")
-    print(f"da {args.voc_file}")
-    cnt = build_move_vocab(args.voc_file, max_rows=args.max_rows_vocab)
-    most_common = cnt.most_common(args.top_k)
-    move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
-    with open("move2idx_generated.json","w",encoding="utf-8") as f:
-        json.dump(move2idx,f,indent=2)
-    print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
+    if args.json:
+        with open(args.json, "r", encoding="utf-8") as f:
+            move2idx = json.load(f)
+    else:
+        print("Costruisco vocabolario delle mosse (prima passata)...")
+        print(f"da {args.voc_file}")
+        cnt = build_move_vocab(args.voc_file, max_rows=args.max_rows_vocab)
+        most_common = cnt.most_common(args.top_k)
+        move2idx = {move: idx for idx,(move,_) in enumerate(most_common)}
+        with open("move2idx_generated.json","w",encoding="utf-8") as f:
+            json.dump(move2idx,f,indent=2)
+        print(f"  -> mosse contate: {len(cnt)}, top_k={len(move2idx)} salvato in move2idx_generated.json")
 
     base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014_csv/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
@@ -194,7 +199,7 @@ def main():
         print(f"[Batch {batch}] Running: {' '.join(cmd)}")
 
         print("Creo esempi (posizione->mossa) dalla FEN (seconda passata)...")
-        X_boards, X_eloside, y, y_value, legal_indices = create_dataset_from_csv(in_file, move2idx, indices_size=len(cnt), max_examples=args.max_examples)
+        X_boards, X_eloside, y, y_value, legal_indices = create_dataset_from_csv(in_file, move2idx, indices_size=len(move2idx), max_examples=args.max_examples)
         print(f"Esempi creati: {len(y)}")
         print("Salvo .npz compresso...")
         np.savez_compressed(out_file, X_boards=X_boards, X_eloside=X_eloside, y=y, y_value=y_value, legal_indices=legal_indices)

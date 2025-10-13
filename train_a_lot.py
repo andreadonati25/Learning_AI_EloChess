@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-    python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 20 --start 1
+    python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10
+    python train_a_lot.py --model model_versions_V2/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10
 """
 import argparse
 import subprocess
@@ -47,7 +48,7 @@ def main():
         subprocess.run(cmd, check=True)
 
         model_old = model_save_to_step
-        version = batch / 1 + args.starting_version
+        version = batch / 10 + args.starting_version
         start += args.game_split
         batch += 1
 

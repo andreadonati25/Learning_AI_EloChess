@@ -1,4 +1,5 @@
 import chess
+import json
 
 moves = []
 
@@ -43,5 +44,7 @@ print(sorted(moves))
 print(len(moves))
 assert len(moves) == len(set(moves))
 
-with open("allmoves2.txt", "w+") as f:
-	f.write("\n".join(moves))
+move2idx = {move: idx for idx,move in enumerate(moves)}
+with open("move2idx_all.json","w",encoding="utf-8") as f:
+	json.dump(move2idx,f,indent=2)
+print(f"  -> mosse contate: {len(moves)}, top_k={len(move2idx)} salvato in move2idx_all.json")
