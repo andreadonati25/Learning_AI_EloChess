@@ -121,6 +121,8 @@ def main():
                             tf.keras.metrics.SparseTopKCategoricalAccuracy(k=5, name="top5_acc"),
                             tf.keras.metrics.SparseTopKCategoricalAccuracy(k=10, name="top10_acc"),
                             ],"value": tf.keras.metrics.MeanSquaredError(name="value_mse")})
+    else:
+        model.optimizer.learning_rate.assign(args.lr)
 
     if args.validation:        
         X_boards_val, X_eloside_val, y_val, y_value_val, _, legal_indices_val = load_npz_dataset(args.validation)
