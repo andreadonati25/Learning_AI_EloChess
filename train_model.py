@@ -96,7 +96,6 @@ def main():
     parser.add_argument("--monitor", default="val_policy_loss")
     parser.add_argument("--compile", default=True)
     parser.add_argument("--validation", default=None, help="validation dataset")
-    parser.add_argument("--validation_indices")
     args = parser.parse_args()
 
 
