@@ -1,0 +1,3 @@
+Time: 2025-10-15T13:34:40.610277, Start:1, End:1500, Version:0
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V0 --dataset all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --save_to model_versions/chess_elo_model_V1 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+

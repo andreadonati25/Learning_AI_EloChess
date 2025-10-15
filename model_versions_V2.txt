@@ -1,0 +1,9 @@
+Riparto da chess_elo_model_V0 che è compilato con lr = 1e-3, policy_weight = 1.0, value_weight = 0.5.
+2 chiamate di training su 100 file (1500 partite, circa 100k posizioni) salvando ogni 10 train una versione differente.
+Ogni volta con compile = true.
+Ogni volta con 100% (quasi) del file usato come training e un set di validazione fisso. Sono stati tolti gli esempi di questo file (77) presi per il set di validazione.
+Il set di validazione (10010 esempi) è stato creato prendendo 77 esempi da 130 file (di cui 100 sono gli stessi usati ora). Non c'è controllo se un esempio di training è uguale ad uno di valutazione (è possibile se nel file c'erano due posizioni uguali oppure se nel file c'è una posizione uguale ad una presa in validazione da un differente file).
+
+python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10 --starting_version 10 --validation validation_10k_positions_from_130_files.npz

@@ -13,6 +13,7 @@ import numpy as np
 import tensorflow as tf
 import os
 from datetime import datetime
+import json
 
 def load_npz_dataset(npz_path):
     print("Carico dataset:", npz_path)
@@ -93,30 +94,62 @@ def main():
     parser.add_argument("--policy_weight", type=float, default=1.0)
     parser.add_argument("--value_weight", type=float, default=0.5)
     parser.add_argument("--monitor", default="val_policy_loss")
+    parser.add_argument("--compile", default=True)
+    parser.add_argument("--validation", default=None, help="validation dataset")
+    parser.add_argument("--validation_indices")
     args = parser.parse_args()
+
+
+    if args.validation:
+        csv_path = (args.dataset).replace("npz", "csv")
+        with open("validation_selected_indices.json", "r", encoding="utf-8") as f:
+            indices = json.load(f)
+        this_ind = indices[csv_path]
 
     X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset)
     N = X_boards.shape[0]
 
     # Load model
     print(f"Loading model from {args.model}.keras ...")
-    model = tf.keras.models.load_model(args.model + ".keras", compile=False)
+    
+    model = tf.keras.models.load_model(args.model + ".keras", compile=args.compile)
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=args.lr),
+    if args.compile == False:
+        model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=args.lr),
                   loss={"policy": tf.keras.losses.SparseCategoricalCrossentropy(),"value": tf.keras.losses.MeanSquaredError()},
                   loss_weights={"policy": args.policy_weight, "value": args.value_weight},
                   metrics={"policy": tf.keras.metrics.SparseCategoricalAccuracy(name="policy_acc"),"value": tf.keras.metrics.MeanSquaredError(name="value_mse")})
 
-    idx = np.arange(N)
-    np.random.shuffle(idx)
-    split = int(args.train_per * N)
-    train_idx, val_idx = idx[:split], idx[split:]
+    if args.validation:        
+        X_boards_val, X_eloside_val, y_val, y_value_val, _, legal_indices_val = load_npz_dataset(args.validation)
 
-    Xb_train, Xe_train, y_train, yv_train, Li_train = X_boards[train_idx], X_eloside[train_idx], y[train_idx], y_value[train_idx], legal_indices[train_idx]
-    Xb_val, Xe_val, y_val, yv_val, Li_val = X_boards[val_idx], X_eloside[val_idx], y[val_idx], y_value[val_idx], legal_indices[val_idx]
+        Xb_train, Xe_train, y_train, yv_train, Li_train = [], [], [], [], []
+        for i in range(N):
+            if i not in this_ind:
+                Xb_train.append(X_boards[i])
+                Xe_train.append(X_eloside[i])
+                y_train.append(y[i])
+                yv_train.append(y_value[i])
+                Li_train.append(legal_indices[i])
+        Xb_train = np.array(Xb_train, dtype=np.uint8)
+        Xe_train = np.array(Xe_train, dtype=np.float32)
+        y_train = np.array(y_train, dtype=np.int32)
+        yv_train = np.array(yv_train, dtype=np.float32)
+        Li_train = np.array(Li_train, dtype=np.uint8)
 
-    train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
-    val_ds = make_tf_dataset(Xb_val, Xe_val, y_val, yv_val, Li_val, batch_size=args.batch_size, shuffle=False, alpha=args.alpha)
+        train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+        val_ds = make_tf_dataset(X_boards_val, X_eloside_val, y_val, y_value_val, legal_indices_val, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+    else:
+        idx = np.arange(N)
+        np.random.shuffle(idx)
+        split = int(args.train_per * N)
+        train_idx, val_idx = idx[:split], idx[split:]
+
+        Xb_train, Xe_train, y_train, yv_train, Li_train = X_boards[train_idx], X_eloside[train_idx], y[train_idx], y_value[train_idx], legal_indices[train_idx]
+        Xb_val, Xe_val, y_val, yv_val, Li_val = X_boards[val_idx], X_eloside[val_idx], y[val_idx], y_value[val_idx], legal_indices[val_idx]
+
+        train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+        val_ds = make_tf_dataset(Xb_val, Xe_val, y_val, yv_val, Li_val, batch_size=args.batch_size, shuffle=False, alpha=args.alpha)
 
     cb = []
     checkpoint_path = args.model + "_best.keras"
