@@ -142,7 +142,7 @@ def main():
         Li_train = np.array(Li_train, dtype=np.uint8)
 
         train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
-        val_ds = make_tf_dataset(X_boards_val, X_eloside_val, y_val, y_value_val, legal_indices_val, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+        val_ds = make_tf_dataset(X_boards_val, X_eloside_val, y_val, y_value_val, legal_indices_val, batch_size=args.batch_size, shuffle=False, alpha=args.alpha)
     else:
         idx = np.arange(N)
         np.random.shuffle(idx)
