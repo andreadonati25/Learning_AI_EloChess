@@ -108,7 +108,11 @@ if __name__ == "__main__":
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=args.lr),
                   loss={"policy": tf.keras.losses.SparseCategoricalCrossentropy(),"value": tf.keras.losses.MeanSquaredError()}, 
                   loss_weights={"policy": args.policy_weight, "value": args.value_weight},
-                  metrics={"policy": tf.keras.metrics.SparseCategoricalAccuracy(name="policy_acc"),"value": tf.keras.metrics.MeanSquaredError(name="value_mse")})
+                  metrics={"policy": [
+                                tf.keras.metrics.SparseCategoricalAccuracy(name="policy_acc"),
+                                tf.keras.metrics.SparseTopKCategoricalAccuracy(k=5, name="top5_acc"),
+                                tf.keras.metrics.SparseTopKCategoricalAccuracy(k=10, name="top10_acc"),
+                            ],"value": tf.keras.metrics.MeanSquaredError(name="value_mse")})
     
     model.save(args.model_out + ".keras")
     print("Modello salvato in:", args.model_out + ".keras")
