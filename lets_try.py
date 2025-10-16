@@ -21,15 +21,17 @@ Options of interest:
     --topk: top-k moves consigliate
 
     Usage example:
-        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --dataset first_dataset_100k.npz --index 100
-        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --dataset first_dataset_100k.npz --export_csv 100Examples.csv --start 0 --end 101
-        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_generated.json --topk 10 --fen "5k2/1p6/2p1b2p/p3PppN/4p1P1/1P5P/P3KP2/8 w - f6 0 34" --elo_w 1399 --elo_b 1666
+        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_all.json --topk 5 --dataset validation_10k_positions_from_130_files.npz --index 100
+        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_all.json --topk 5 --dataset validation_10k_positions_from_130_files.npz --export_csv 100Examples.csv --start 0 --end 101
+        python lets_try.py --model chess_elo_model_V1.keras --move2idx move2idx_all.json --topk 5 --fen "5k2/1p6/2p1b2p/p3PppN/4p1P1/1P5P/P3KP2/8 w - f6 0 34" --elo_w 1399 --elo_b 1666
 
 """
 import argparse, json, csv
 import numpy as np
 import tensorflow as tf
 import chess
+from stockfish import Stockfish
+from tqdm import tqdm
 
 def planes_to_board(planes, side_to_move, halfmove_clock, number_move):
     board = chess.Board()
@@ -134,6 +136,8 @@ def load_npz_dataset(npz_path):
 
 def export_csv(model, idx2move, Xb, Xe, y, yv, legal_indices, out_csv, topk, illegal, start=0, end=-1, batch_size=128):
 
+    stockfish = Stockfish("C:\\Users\\Andrea\\Documents\\GitHubRepo\\stockfish\\stockfish-windows-x86-64-avx2.exe")
+
     N = Xb.shape[0]
     if end == -1 or end > N:
         end = N
@@ -160,9 +164,10 @@ def export_csv(model, idx2move, Xb, Xe, y, yv, legal_indices, out_csv, topk, ill
 
     # write CSV
     with open(out_csv, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        header = ["index","fen","side","elo_side","elo_opponent","value_pred","true_move","true_result","true_move_prob","topk","legal_moves"]
+        writer = csv.writer(f, delimiter=";")
+        header = ["index","fen","side","elo_side","elo_opponent","true_move","true_result","value_pred","true_move_prob","topk","topk_prob","topk_stockfish","legal_moves"]
         writer.writerow(header)
+        pbar = tqdm(total=len(indices), desc="positions", disable=False)
         for i_idx, idx in enumerate(indices):
             planes = Xb[idx]
             eloside = Xe[idx]
@@ -177,6 +182,15 @@ def export_csv(model, idx2move, Xb, Xe, y, yv, legal_indices, out_csv, topk, ill
             else:
                 true_res = "LOSS"
             board = planes_to_board(planes, eloside[2], eloside[3], eloside[4])
+            stockfish.set_fen_position(board.fen())
+            sto_topk = stockfish.get_top_moves(topk)
+            moss_topk = []
+            for i in range(len(sto_topk)):
+                try:
+                    mv = chess.Move.from_uci(sto_topk[i]["Move"])
+                    moss_topk.append(f"{board.san(mv)}")
+                except Exception:
+                    moss_topk.append(sto_topk[i]["Move"])
             try:
                 true_move_san = board.san(chess.Move.from_uci(true_move))
             except Exception:
@@ -195,16 +209,27 @@ def export_csv(model, idx2move, Xb, Xe, y, yv, legal_indices, out_csv, topk, ill
                 except Exception:
                     top_san[i] = ("?", prob)
                 i += 1
-            topkstr = ";".join([f"{u}:{prob*100:.2f}%" for (u,prob) in top_san])
-            legal_moves = ";".join([f"{board.san(m)}" for m in board.legal_moves])
+
             side_str = "White" if eloside[2]==1.0 else "Black"
             elo_side = (eloside[0] if eloside[2]==1.0 else eloside[1])*1000 + 1000
             elo_opponent = (eloside[0] if eloside[2]==0.0 else eloside[1])*1000 + 1000
-            writer.writerow([idx, board.fen(), side_str, f"{elo_side:.0f}", f"{elo_opponent:.0f}", f"{v:.4f}", true_move_san, true_res, f"{tprob:.6f}", topkstr, legal_moves])
+
+            topk_str = ", ".join([f"{u}" for (u,prob) in top_san if prob != 0])
+            topk_str_prob = ", ".join([f"{prob*100:.2f}%" for (u,prob) in top_san if prob != 0])
+            moss_topk = ", ".join([f"{m}" for m in moss_topk])
+            legal_moves = ", ".join([f"{board.san(m)}" for m in board.legal_moves])
+
+            writer.writerow([idx, board.fen(), side_str, f"{elo_side:.0f}", f"{elo_opponent:.0f}", true_move_san, true_res, f"{v:.4f}", f"{tprob*100:.2f}%", topk_str, topk_str_prob, moss_topk, legal_moves])
+            pbar.update(1)
+
+        pbar.close()
+
     print("Export completato.")
 
 def infer_from_index(model, idx2move, X_boards, X_eloside, y, y_value, legal_indices, index, topk, illegal):
     
+    stockfish = Stockfish("C:\\Users\\Andrea\\Documents\\GitHubRepo\\stockfish\\stockfish-windows-x86-64-avx2.exe")
+
     if index < 0 or index >= X_boards.shape[0]:
         print("Index out of range:", index)
         return
@@ -223,6 +248,16 @@ def infer_from_index(model, idx2move, X_boards, X_eloside, y, y_value, legal_ind
         true_res = "LOSS"
 
     board = planes_to_board(planes, eloside[2], eloside[3], eloside[4])
+
+    stockfish.set_fen_position(board.fen())
+    sto_topk = stockfish.get_top_moves(topk)
+    moss_topk = []
+    for i in range(len(sto_topk)):
+        try:
+            mv = chess.Move.from_uci(sto_topk[i]["Move"])
+            moss_topk.append(board.san(mv))
+        except Exception:
+            moss_topk.append(sto_topk[i]["Move"])
 
     # predizione del modello
     b = np.expand_dims(planes, axis=0)
@@ -290,15 +325,31 @@ def infer_from_index(model, idx2move, X_boards, X_eloside, y, y_value, legal_ind
     print(board.fen())
     print("Board legal moves:")
     print(board.legal_moves)
+    print("Mosse migliori Stockfish:")
+    print(moss_topk)
 
 def infer_from_fen(model, move2idx, idx2move, fen, elo_w, elo_b, topk, illegal):
 
+    stockfish = Stockfish("C:\\Users\\Andrea\\Documents\\GitHubRepo\\stockfish\\stockfish-windows-x86-64-avx2.exe")
+
     white_elo = float(elo_w)
     black_elo = float(elo_b)
+    mean_elo = (white_elo + black_elo) / 2
     w_elo_norm = (white_elo - 1000.0) / 1000.0
     b_elo_norm = (black_elo - 1000.0) / 1000.0
 
     planes, halfmove_clock, number_move, side_to_move = board_from_fen_to_planes(fen)
+    
+    stockfish.set_fen_position(fen)
+    sto_topk = stockfish.get_top_moves(topk)
+    moss_topk = []
+    for i in range(len(sto_topk)):
+        try:
+            mv = chess.Move.from_uci(sto_topk[i]["Move"])
+            moss_topk.append(board.san(mv))
+        except Exception:
+            moss_topk.append(sto_topk[i]["Move"])
+
     eloside = []
     eloside.append([w_elo_norm, b_elo_norm, side_to_move, halfmove_clock, number_move])
     eloside = np.array(eloside, dtype=np.float32)
@@ -345,6 +396,8 @@ def infer_from_fen(model, move2idx, idx2move, fen, elo_w, elo_b, topk, illegal):
     print(board.fen())
     print("Board legal moves:")
     print(board.legal_moves)
+    print("Mosse migliori Stockfish:")
+    print(moss_topk)
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

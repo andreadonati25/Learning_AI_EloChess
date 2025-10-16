@@ -5,7 +5,7 @@ see_history.py
 Legge un file .npy creato da train_model.py (lista di entry) e produce un file .txt leggibile.
 
 Usage:
-  python see_history.py --history model_versions/chess_elo_model_V1_history.npy
+  python see_history.py --history model_versions/chess_elo_model --out history.txt --end 20
 """
 import argparse
 import numpy as np
