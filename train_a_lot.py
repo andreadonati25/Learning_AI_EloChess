@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10 --validation validation_100k_positions_from_130_files.npz
+    python train_a_lot.py --model model_versions/chess_elo_model --dataset all_positions_jul2014_npz/positions_jul2014.npz --max_games 1048440 --game_split 1500 --max_file 100 --epochs 10 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
 
 """
 import argparse
@@ -19,6 +19,7 @@ def main():
     p.add_argument("--start", type=int, default=1, help="File number to start")
     p.add_argument("--starting_version", type=int, default=0)
     p.add_argument("--validation", default=None, help="validation dataset")
+    p.add_argument("--validation_indices", default=None, help="validation indices")
     args = p.parse_args()
 
     base_dataset = os.path.splitext(args.dataset)[0]  # es: all_positions_jul2014_npz/positions_jul2014
@@ -39,7 +40,8 @@ def main():
             "--dataset", dataset_step,
             "--save_to", model_save_to_step,
             "--epochs", str(args.epochs),
-            "--validation", args.validation
+            "--validation", args.validation,
+            "--validation_indices", args.validation_indices
         ]
 
         time = datetime.now().isoformat()

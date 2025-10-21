@@ -298,3 +298,663 @@ Time: 2025-10-16T06:22:58.522657, Start:147001, End:148500, Version:9.8
 Time: 2025-10-16T06:31:45.034487, Start:148501, End:150000, Version:9.9
 [Batch 100] Running: python train_model.py --model model_versions/chess_elo_model_V10 --dataset all_positions_jul2014_npz/positions_jul2014_game148501_game150000.npz --save_to model_versions/chess_elo_model_V10 --epochs 10 --validation validation_10k_positions_from_130_files.npz
 
+Time: 2025-10-16T20:48:35.349320, Start:1, End:1500, Version:10
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V10 --dataset all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T20:58:59.089376, Start:1501, End:3000, Version:10.1
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game1501_game3000.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:07:24.437388, Start:3001, End:4500, Version:10.2
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game3001_game4500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:15:32.190060, Start:4501, End:6000, Version:10.3
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game4501_game6000.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:26:06.864545, Start:6001, End:7500, Version:10.4
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game6001_game7500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:33:29.791762, Start:7501, End:9000, Version:10.5
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game7501_game9000.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:40:34.039836, Start:9001, End:10500, Version:10.6
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game9001_game10500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:47:49.061520, Start:10501, End:12000, Version:10.7
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game10501_game12000.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T21:55:12.486956, Start:12001, End:13500, Version:10.8
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game12001_game13500.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:04:11.839466, Start:13501, End:15000, Version:10.9
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game13501_game15000.npz --save_to model_versions/chess_elo_model_V11 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:11:15.569475, Start:15001, End:16500, Version:11.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V11 --dataset all_positions_jul2014_npz/positions_jul2014_game15001_game16500.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:21:31.643599, Start:16501, End:18000, Version:11.1
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game16501_game18000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:28:47.616480, Start:18001, End:19500, Version:11.2
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game18001_game19500.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:36:56.332800, Start:19501, End:21000, Version:11.3
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game19501_game21000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:44:25.068956, Start:21001, End:22500, Version:11.4
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game21001_game22500.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T22:52:52.559923, Start:22501, End:24000, Version:11.5
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game22501_game24000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:02:03.170985, Start:24001, End:25500, Version:11.6
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game24001_game25500.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:09:17.760654, Start:25501, End:27000, Version:11.7
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game25501_game27000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:18:37.445447, Start:27001, End:28500, Version:11.8
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game27001_game28500.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:27:00.231695, Start:28501, End:30000, Version:11.9
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game28501_game30000.npz --save_to model_versions/chess_elo_model_V12 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:37:24.132800, Start:30001, End:31500, Version:12.0
+[Batch 21] Running: python train_model.py --model model_versions/chess_elo_model_V12 --dataset all_positions_jul2014_npz/positions_jul2014_game30001_game31500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:44:32.252344, Start:31501, End:33000, Version:12.1
+[Batch 22] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game31501_game33000.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-16T23:54:21.444797, Start:33001, End:34500, Version:12.2
+[Batch 23] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game33001_game34500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:04:42.838635, Start:34501, End:36000, Version:12.3
+[Batch 24] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game34501_game36000.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:12:48.145755, Start:36001, End:37500, Version:12.4
+[Batch 25] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game36001_game37500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:21:05.820032, Start:37501, End:39000, Version:12.5
+[Batch 26] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game37501_game39000.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:28:14.864292, Start:39001, End:40500, Version:12.6
+[Batch 27] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game39001_game40500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:37:49.514406, Start:40501, End:42000, Version:12.7
+[Batch 28] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game40501_game42000.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:45:43.550952, Start:42001, End:43500, Version:12.8
+[Batch 29] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game42001_game43500.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T00:54:38.520483, Start:43501, End:45000, Version:12.9
+[Batch 30] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game43501_game45000.npz --save_to model_versions/chess_elo_model_V13 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:03:34.835244, Start:45001, End:46500, Version:13.0
+[Batch 31] Running: python train_model.py --model model_versions/chess_elo_model_V13 --dataset all_positions_jul2014_npz/positions_jul2014_game45001_game46500.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:13:33.855895, Start:46501, End:48000, Version:13.1
+[Batch 32] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game46501_game48000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:23:34.070455, Start:48001, End:49500, Version:13.2
+[Batch 33] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game48001_game49500.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:30:45.404453, Start:49501, End:51000, Version:13.3
+[Batch 34] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game49501_game51000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:40:46.895844, Start:51001, End:52500, Version:13.4
+[Batch 35] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game51001_game52500.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:48:46.607378, Start:52501, End:54000, Version:13.5
+[Batch 36] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game52501_game54000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T01:58:47.730020, Start:54001, End:55500, Version:13.6
+[Batch 37] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game54001_game55500.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:07:44.445558, Start:55501, End:57000, Version:13.7
+[Batch 38] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game55501_game57000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:18:05.691281, Start:57001, End:58500, Version:13.8
+[Batch 39] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game57001_game58500.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:28:37.685555, Start:58501, End:60000, Version:13.9
+[Batch 40] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game58501_game60000.npz --save_to model_versions/chess_elo_model_V14 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:36:30.459220, Start:60001, End:61500, Version:14.0
+[Batch 41] Running: python train_model.py --model model_versions/chess_elo_model_V14 --dataset all_positions_jul2014_npz/positions_jul2014_game60001_game61500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:46:33.269485, Start:61501, End:63000, Version:14.1
+[Batch 42] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game61501_game63000.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T02:53:52.577149, Start:63001, End:64500, Version:14.2
+[Batch 43] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game63001_game64500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:01:02.358235, Start:64501, End:66000, Version:14.3
+[Batch 44] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game64501_game66000.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:08:06.366420, Start:66001, End:67500, Version:14.4
+[Batch 45] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game66001_game67500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:17:57.980446, Start:67501, End:69000, Version:14.5
+[Batch 46] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game67501_game69000.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:25:57.947878, Start:69001, End:70500, Version:14.6
+[Batch 47] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game69001_game70500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:34:48.616465, Start:70501, End:72000, Version:14.7
+[Batch 48] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game70501_game72000.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:44:26.920009, Start:72001, End:73500, Version:14.8
+[Batch 49] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game72001_game73500.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T03:52:05.013289, Start:73501, End:75000, Version:14.9
+[Batch 50] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game73501_game75000.npz --save_to model_versions/chess_elo_model_V15 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:01:52.770829, Start:75001, End:76500, Version:15.0
+[Batch 51] Running: python train_model.py --model model_versions/chess_elo_model_V15 --dataset all_positions_jul2014_npz/positions_jul2014_game75001_game76500.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:09:48.192312, Start:76501, End:78000, Version:15.1
+[Batch 52] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game76501_game78000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:17:51.347170, Start:78001, End:79500, Version:15.2
+[Batch 53] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game78001_game79500.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:27:57.269536, Start:79501, End:81000, Version:15.3
+[Batch 54] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game79501_game81000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:35:00.081751, Start:81001, End:82500, Version:15.4
+[Batch 55] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game81001_game82500.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:43:03.404130, Start:82501, End:84000, Version:15.5
+[Batch 56] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game82501_game84000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T04:53:13.431621, Start:84001, End:85500, Version:15.6
+[Batch 57] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game84001_game85500.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:00:08.259827, Start:85501, End:87000, Version:15.7
+[Batch 58] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game85501_game87000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:10:16.712721, Start:87001, End:88500, Version:15.8
+[Batch 59] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game87001_game88500.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:20:14.017640, Start:88501, End:90000, Version:15.9
+[Batch 60] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game88501_game90000.npz --save_to model_versions/chess_elo_model_V16 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:27:22.150932, Start:90001, End:91500, Version:16.0
+[Batch 61] Running: python train_model.py --model model_versions/chess_elo_model_V16 --dataset all_positions_jul2014_npz/positions_jul2014_game90001_game91500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:36:41.301857, Start:91501, End:93000, Version:16.1
+[Batch 62] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game91501_game93000.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:46:37.263318, Start:93001, End:94500, Version:16.2
+[Batch 63] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game93001_game94500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T05:55:39.871193, Start:94501, End:96000, Version:16.3
+[Batch 64] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game94501_game96000.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:05:38.607847, Start:96001, End:97500, Version:16.4
+[Batch 65] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game96001_game97500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:15:42.808560, Start:97501, End:99000, Version:16.5
+[Batch 66] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game97501_game99000.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:25:42.587778, Start:99001, End:100500, Version:16.6
+[Batch 67] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game99001_game100500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:34:57.363072, Start:100501, End:102000, Version:16.7
+[Batch 68] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game100501_game102000.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:41:55.366338, Start:102001, End:103500, Version:16.8
+[Batch 69] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game102001_game103500.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:48:46.307487, Start:103501, End:105000, Version:16.9
+[Batch 70] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game103501_game105000.npz --save_to model_versions/chess_elo_model_V17 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T06:58:14.814057, Start:105001, End:106500, Version:17.0
+[Batch 71] Running: python train_model.py --model model_versions/chess_elo_model_V17 --dataset all_positions_jul2014_npz/positions_jul2014_game105001_game106500.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:05:16.995363, Start:106501, End:108000, Version:17.1
+[Batch 72] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game106501_game108000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:12:19.166479, Start:108001, End:109500, Version:17.2
+[Batch 73] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game108001_game109500.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:19:16.252758, Start:109501, End:111000, Version:17.3
+[Batch 74] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game109501_game111000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:27:10.873720, Start:111001, End:112500, Version:17.4
+[Batch 75] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game111001_game112500.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:37:10.972230, Start:112501, End:114000, Version:17.5
+[Batch 76] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game112501_game114000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:44:57.042655, Start:114001, End:115500, Version:17.6
+[Batch 77] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game114001_game115500.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T07:53:35.340503, Start:115501, End:117000, Version:17.7
+[Batch 78] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game115501_game117000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:01:28.709727, Start:117001, End:118500, Version:17.8
+[Batch 79] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game117001_game118500.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:11:45.209535, Start:118501, End:120000, Version:17.9
+[Batch 80] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game118501_game120000.npz --save_to model_versions/chess_elo_model_V18 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:18:30.929634, Start:120001, End:121500, Version:18.0
+[Batch 81] Running: python train_model.py --model model_versions/chess_elo_model_V18 --dataset all_positions_jul2014_npz/positions_jul2014_game120001_game121500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:26:43.281836, Start:121501, End:123000, Version:18.1
+[Batch 82] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game121501_game123000.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:36:57.962283, Start:123001, End:124500, Version:18.2
+[Batch 83] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game123001_game124500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:46:56.246210, Start:124501, End:126000, Version:18.3
+[Batch 84] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game124501_game126000.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T08:56:13.220129, Start:126001, End:127500, Version:18.4
+[Batch 85] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game126001_game127500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:05:49.253705, Start:127501, End:129000, Version:18.5
+[Batch 86] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game127501_game129000.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:12:57.340035, Start:129001, End:130500, Version:18.6
+[Batch 87] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game129001_game130500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:23:05.448908, Start:130501, End:132000, Version:18.7
+[Batch 88] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game130501_game132000.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:30:30.701178, Start:132001, End:133500, Version:18.8
+[Batch 89] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game132001_game133500.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:37:45.252856, Start:133501, End:135000, Version:18.9
+[Batch 90] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game133501_game135000.npz --save_to model_versions/chess_elo_model_V19 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:44:54.969713, Start:135001, End:136500, Version:19.0
+[Batch 91] Running: python train_model.py --model model_versions/chess_elo_model_V19 --dataset all_positions_jul2014_npz/positions_jul2014_game135001_game136500.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T09:53:11.035104, Start:136501, End:138000, Version:19.1
+[Batch 92] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game136501_game138000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:03:23.371199, Start:138001, End:139500, Version:19.2
+[Batch 93] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game138001_game139500.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:11:43.939390, Start:139501, End:141000, Version:19.3
+[Batch 94] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game139501_game141000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:18:43.932428, Start:141001, End:142500, Version:19.4
+[Batch 95] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game141001_game142500.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:26:01.462997, Start:142501, End:144000, Version:19.5
+[Batch 96] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game142501_game144000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:33:27.802555, Start:144001, End:145500, Version:19.6
+[Batch 97] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game144001_game145500.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:42:45.421638, Start:145501, End:147000, Version:19.7
+[Batch 98] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game145501_game147000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T10:53:29.117851, Start:147001, End:148500, Version:19.8
+[Batch 99] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game147001_game148500.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-17T11:02:52.571071, Start:148501, End:150000, Version:19.9
+[Batch 100] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game148501_game150000.npz --save_to model_versions/chess_elo_model_V20 --epochs 10 --validation validation_10k_positions_from_130_files.npz
+
+Time: 2025-10-18T12:55:51.248919, Start:150001, End:151500, Version:20
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game150001_game151500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T12:57:40.691112, Start:151501, End:153000, Version:20.1
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game151501_game153000.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:00:18.362550, Start:153001, End:154500, Version:20.2
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game153001_game154500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:03:14.109881, Start:154501, End:156000, Version:20.3
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game154501_game156000.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:06:20.162897, Start:156001, End:157500, Version:20.4
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game156001_game157500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:09:03.778732, Start:157501, End:159000, Version:20.5
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game157501_game159000.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:11:32.360361, Start:159001, End:160500, Version:20.6
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game159001_game160500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:13:54.807778, Start:160501, End:162000, Version:20.7
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game160501_game162000.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:16:08.308085, Start:162001, End:163500, Version:20.8
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game162001_game163500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:18:15.518073, Start:163501, End:165000, Version:20.9
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game163501_game165000.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:20:22.239630, Start:165001, End:166500, Version:21.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V21 --dataset all_positions_jul2014_npz/positions_jul2014_game165001_game166500.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:22:34.322464, Start:166501, End:168000, Version:21.1
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game166501_game168000.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:24:37.995035, Start:168001, End:169500, Version:21.2
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game168001_game169500.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:26:48.458017, Start:169501, End:171000, Version:21.3
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game169501_game171000.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:28:54.266924, Start:171001, End:172500, Version:21.4
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game171001_game172500.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:31:09.625410, Start:172501, End:174000, Version:21.5
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game172501_game174000.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:33:57.269224, Start:174001, End:175500, Version:21.6
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game174001_game175500.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:36:17.898333, Start:175501, End:177000, Version:21.7
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game175501_game177000.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:38:36.450039, Start:177001, End:178500, Version:21.8
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game177001_game178500.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:40:51.332467, Start:178501, End:180000, Version:21.9
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game178501_game180000.npz --save_to model_versions/chess_elo_model_V22 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:43:00.403262, Start:180001, End:181500, Version:22.0
+[Batch 21] Running: python train_model.py --model model_versions/chess_elo_model_V22 --dataset all_positions_jul2014_npz/positions_jul2014_game180001_game181500.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:45:08.580092, Start:181501, End:183000, Version:22.1
+[Batch 22] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game181501_game183000.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:47:24.210425, Start:183001, End:184500, Version:22.2
+[Batch 23] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game183001_game184500.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:49:45.893136, Start:184501, End:186000, Version:22.3
+[Batch 24] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game184501_game186000.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:52:01.017333, Start:186001, End:187500, Version:22.4
+[Batch 25] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game186001_game187500.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:54:18.239214, Start:187501, End:189000, Version:22.5
+[Batch 26] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game187501_game189000.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:56:24.234338, Start:189001, End:190500, Version:22.6
+[Batch 27] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game189001_game190500.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T13:58:39.645289, Start:190501, End:192000, Version:22.7
+[Batch 28] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game190501_game192000.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T14:00:56.338314, Start:192001, End:193500, Version:22.8
+[Batch 29] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game192001_game193500.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T14:03:11.341831, Start:193501, End:195000, Version:22.9
+[Batch 30] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game193501_game195000.npz --save_to model_versions/chess_elo_model_V23 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
+
+Time: 2025-10-18T15:35:42.874144, Start:150001, End:151500, Version:23
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V23 --dataset all_positions_jul2014_npz/positions_jul2014_game150001_game151500.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:39:36.553422, Start:151501, End:153000, Version:23.1
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game151501_game153000.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:42:24.103407, Start:153001, End:154500, Version:23.2
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game153001_game154500.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:44:42.578554, Start:154501, End:156000, Version:23.3
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game154501_game156000.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:46:58.995854, Start:156001, End:157500, Version:23.4
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game156001_game157500.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:49:09.507153, Start:157501, End:159000, Version:23.5
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game157501_game159000.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:51:16.963198, Start:159001, End:160500, Version:23.6
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game159001_game160500.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:53:27.768128, Start:160501, End:162000, Version:23.7
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game160501_game162000.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:55:38.320180, Start:162001, End:163500, Version:23.8
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game162001_game163500.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:57:48.206301, Start:163501, End:165000, Version:23.9
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game163501_game165000.npz --save_to model_versions/chess_elo_model_V24 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T15:59:58.854753, Start:165001, End:166500, Version:24.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V24 --dataset all_positions_jul2014_npz/positions_jul2014_game165001_game166500.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:02:10.984841, Start:166501, End:168000, Version:24.1
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game166501_game168000.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:04:08.664434, Start:168001, End:169500, Version:24.2
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game168001_game169500.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:06:12.483623, Start:169501, End:171000, Version:24.3
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game169501_game171000.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:08:13.972624, Start:171001, End:172500, Version:24.4
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game171001_game172500.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:10:23.550595, Start:172501, End:174000, Version:24.5
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game172501_game174000.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:12:35.214038, Start:174001, End:175500, Version:24.6
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game174001_game175500.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:14:44.912614, Start:175501, End:177000, Version:24.7
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game175501_game177000.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:16:59.168755, Start:177001, End:178500, Version:24.8
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game177001_game178500.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:19:10.303392, Start:178501, End:180000, Version:24.9
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game178501_game180000.npz --save_to model_versions/chess_elo_model_V25 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:21:18.467823, Start:180001, End:181500, Version:25.0
+[Batch 21] Running: python train_model.py --model model_versions/chess_elo_model_V25 --dataset all_positions_jul2014_npz/positions_jul2014_game180001_game181500.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:23:28.054891, Start:181501, End:183000, Version:25.1
+[Batch 22] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game181501_game183000.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:25:36.322809, Start:183001, End:184500, Version:25.2
+[Batch 23] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game183001_game184500.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:27:46.699234, Start:184501, End:186000, Version:25.3
+[Batch 24] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game184501_game186000.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:30:08.175464, Start:186001, End:187500, Version:25.4
+[Batch 25] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game186001_game187500.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:32:22.265013, Start:187501, End:189000, Version:25.5
+[Batch 26] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game187501_game189000.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:34:27.158942, Start:189001, End:190500, Version:25.6
+[Batch 27] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game189001_game190500.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:36:51.741649, Start:190501, End:192000, Version:25.7
+[Batch 28] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game190501_game192000.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:39:14.051079, Start:192001, End:193500, Version:25.8
+[Batch 29] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game192001_game193500.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:41:21.842172, Start:193501, End:195000, Version:25.9
+[Batch 30] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game193501_game195000.npz --save_to model_versions/chess_elo_model_V26 --epochs 2 --validation validation_10k_positions_from_130_files_V2.npz --validation_indices validation_selected_indices_V2.json
+
+Time: 2025-10-18T16:43:29.972752, Start:150001, End:151500, Version:26
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V26 --dataset all_positions_jul2014_npz/positions_jul2014_game150001_game151500.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:45:33.904197, Start:151501, End:153000, Version:26.1
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game151501_game153000.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:47:46.743593, Start:153001, End:154500, Version:26.2
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game153001_game154500.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:49:58.695141, Start:154501, End:156000, Version:26.3
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game154501_game156000.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:52:08.175791, Start:156001, End:157500, Version:26.4
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game156001_game157500.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:54:14.077857, Start:157501, End:159000, Version:26.5
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game157501_game159000.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:56:17.808455, Start:159001, End:160500, Version:26.6
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game159001_game160500.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T16:58:23.860849, Start:160501, End:162000, Version:26.7
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game160501_game162000.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:00:29.240854, Start:162001, End:163500, Version:26.8
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game162001_game163500.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:02:35.289651, Start:163501, End:165000, Version:26.9
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game163501_game165000.npz --save_to model_versions/chess_elo_model_V27 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:04:40.731549, Start:165001, End:166500, Version:27.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V27 --dataset all_positions_jul2014_npz/positions_jul2014_game165001_game166500.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:06:49.716048, Start:166501, End:168000, Version:27.1
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game166501_game168000.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:08:49.758685, Start:168001, End:169500, Version:27.2
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game168001_game169500.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:10:56.426817, Start:169501, End:171000, Version:27.3
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game169501_game171000.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:12:58.776476, Start:171001, End:172500, Version:27.4
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game171001_game172500.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:15:05.592138, Start:172501, End:174000, Version:27.5
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game172501_game174000.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:17:17.200849, Start:174001, End:175500, Version:27.6
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game174001_game175500.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:19:28.892115, Start:175501, End:177000, Version:27.7
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game175501_game177000.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:21:42.043656, Start:177001, End:178500, Version:27.8
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game177001_game178500.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:23:51.586343, Start:178501, End:180000, Version:27.9
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game178501_game180000.npz --save_to model_versions/chess_elo_model_V28 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:26:00.982273, Start:180001, End:181500, Version:28.0
+[Batch 21] Running: python train_model.py --model model_versions/chess_elo_model_V28 --dataset all_positions_jul2014_npz/positions_jul2014_game180001_game181500.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:28:07.584764, Start:181501, End:183000, Version:28.1
+[Batch 22] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game181501_game183000.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:30:11.834857, Start:183001, End:184500, Version:28.2
+[Batch 23] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game183001_game184500.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:32:26.148518, Start:184501, End:186000, Version:28.3
+[Batch 24] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game184501_game186000.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:34:37.441683, Start:186001, End:187500, Version:28.4
+[Batch 25] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game186001_game187500.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:36:46.585839, Start:187501, End:189000, Version:28.5
+[Batch 26] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game187501_game189000.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:38:53.770749, Start:189001, End:190500, Version:28.6
+[Batch 27] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game189001_game190500.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:41:08.397963, Start:190501, End:192000, Version:28.7
+[Batch 28] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game190501_game192000.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:43:19.829084, Start:192001, End:193500, Version:28.8
+[Batch 29] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game192001_game193500.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:45:26.691773, Start:193501, End:195000, Version:28.9
+[Batch 30] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game193501_game195000.npz --save_to model_versions/chess_elo_model_V29 --epochs 2 --validation validation_10k_positions_from_130_files_V3.npz --validation_indices validation_selected_indices_V3.json
+
+Time: 2025-10-18T17:47:37.533263, Start:150001, End:151500, Version:29
+[Batch 1] Running: python train_model.py --model model_versions/chess_elo_model_V29 --dataset all_positions_jul2014_npz/positions_jul2014_game150001_game151500.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T17:49:42.909461, Start:151501, End:153000, Version:29.1
+[Batch 2] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game151501_game153000.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T17:51:52.547102, Start:153001, End:154500, Version:29.2
+[Batch 3] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game153001_game154500.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T17:54:00.585574, Start:154501, End:156000, Version:29.3
+[Batch 4] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game154501_game156000.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T17:56:12.413166, Start:156001, End:157500, Version:29.4
+[Batch 5] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game156001_game157500.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T17:58:20.825733, Start:157501, End:159000, Version:29.5
+[Batch 6] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game157501_game159000.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:00:24.260793, Start:159001, End:160500, Version:29.6
+[Batch 7] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game159001_game160500.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:02:32.937827, Start:160501, End:162000, Version:29.7
+[Batch 8] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game160501_game162000.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:04:39.626372, Start:162001, End:163500, Version:29.8
+[Batch 9] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game162001_game163500.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:06:45.620075, Start:163501, End:165000, Version:29.9
+[Batch 10] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game163501_game165000.npz --save_to model_versions/chess_elo_model_V30 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:08:52.818267, Start:165001, End:166500, Version:30.0
+[Batch 11] Running: python train_model.py --model model_versions/chess_elo_model_V30 --dataset all_positions_jul2014_npz/positions_jul2014_game165001_game166500.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:11:04.316224, Start:166501, End:168000, Version:30.1
+[Batch 12] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game166501_game168000.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:13:06.005192, Start:168001, End:169500, Version:30.2
+[Batch 13] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game168001_game169500.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:15:16.118508, Start:169501, End:171000, Version:30.3
+[Batch 14] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game169501_game171000.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:17:16.072317, Start:171001, End:172500, Version:30.4
+[Batch 15] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game171001_game172500.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:19:26.903651, Start:172501, End:174000, Version:30.5
+[Batch 16] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game172501_game174000.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:21:36.187528, Start:174001, End:175500, Version:30.6
+[Batch 17] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game174001_game175500.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:23:45.930147, Start:175501, End:177000, Version:30.7
+[Batch 18] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game175501_game177000.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:26:11.673059, Start:177001, End:178500, Version:30.8
+[Batch 19] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game177001_game178500.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:28:29.042174, Start:178501, End:180000, Version:30.9
+[Batch 20] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game178501_game180000.npz --save_to model_versions/chess_elo_model_V31 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:30:34.831180, Start:180001, End:181500, Version:31.0
+[Batch 21] Running: python train_model.py --model model_versions/chess_elo_model_V31 --dataset all_positions_jul2014_npz/positions_jul2014_game180001_game181500.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:32:40.452312, Start:181501, End:183000, Version:31.1
+[Batch 22] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game181501_game183000.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:34:42.483265, Start:183001, End:184500, Version:31.2
+[Batch 23] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game183001_game184500.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:36:49.904831, Start:184501, End:186000, Version:31.3
+[Batch 24] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game184501_game186000.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:38:53.434086, Start:186001, End:187500, Version:31.4
+[Batch 25] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game186001_game187500.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:41:04.274362, Start:187501, End:189000, Version:31.5
+[Batch 26] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game187501_game189000.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:43:11.321933, Start:189001, End:190500, Version:31.6
+[Batch 27] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game189001_game190500.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:45:25.990088, Start:190501, End:192000, Version:31.7
+[Batch 28] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game190501_game192000.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:47:33.524975, Start:192001, End:193500, Version:31.8
+[Batch 29] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game192001_game193500.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+
+Time: 2025-10-18T18:49:36.525630, Start:193501, End:195000, Version:31.9
+[Batch 30] Running: python train_model.py --model model_versions/chess_elo_model_V32 --dataset all_positions_jul2014_npz/positions_jul2014_game193501_game195000.npz --save_to model_versions/chess_elo_model_V32 --epochs 2 --validation validation_10k_positions_from_130_files_V4.npz --validation_indices validation_selected_indices_V4.json
+

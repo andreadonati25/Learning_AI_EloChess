@@ -7,7 +7,7 @@ Legge CSV con colonne minime:
   - dataset .npz con X_boards, X_eloside, y, y_value, legal_indices
 
 Usage example:
-    python csv_to_npz_validation.py all_positions_jul2014_csv/positions_jul2014 validation_100k_positions_from_130_files.npz --json move2idz_all.json --example_from_file 769 --game_split 1500 --max_games 1048440 --max_file 130
+    python csv_to_npz_validation.py all_positions_jul2014_csv/positions_jul2014 validation_100k_positions_from_130_files.npz --json move2idz_all.json --selected_indices_out validation_selected_indices.json --example_from_file 769 --game_split 1500 --max_games 1048440 --max_file 130
 """
 
 import argparse, json
@@ -159,6 +159,8 @@ def main():
     parser.add_argument("--game_split", type=int, default=None, help="number of games in ogni file in input")
     parser.add_argument("--max_games", type=int, default=None, help="max number of games in totale")
     parser.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
+    parser.add_argument("--start", type=int, default=1, help="File number to start")
+    parser.add_argument("--selected_indices_out")
     args = parser.parse_args()
 
     with open(args.json, "r", encoding="utf-8") as f:
@@ -174,7 +176,7 @@ def main():
     legal_indices = []
 
     indices = {}
-    start = 1
+    start = 1 + (args.start - 1) * args.game_split
     batch = 1
     while batch <= args.max_file:
         end = min(start + args.game_split - 1, args.max_games)
@@ -189,7 +191,7 @@ def main():
         start += args.game_split
         batch += 1
 
-    with open("validation_selected_indices.json","w",encoding="utf-8") as f:
+    with open(args.selected_indices_out,"w",encoding="utf-8") as f:
         json.dump(indices,f,indent=2)
 
     X_boards = np.array(X_boards, dtype=np.uint8)

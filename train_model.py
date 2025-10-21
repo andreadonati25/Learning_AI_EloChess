@@ -5,7 +5,7 @@ train_model.py
 Funzioni di allenamento per il modello policy+value usato nel progetto scacchi.
 
  Usage example:
-    python train_model.py --model chess_elo_model_V0 --dataset all_positions_jul2014_npz/positions_jul2014_game1_game1500.npz --save_to model_versions/chess_elo_model_V1 --epochs 20
+    python train_model.py --model model_versions/chess_elo_model_V20 --dataset all_positions_jul2014_npz/positions_jul2014_game150001_game151500.npz --save_to model_versions/chess_elo_model_V21 --epochs 2 --validation validation_10k_positions_from_130_files.npz --validation_indices validation_selected_indices.json
 """
 
 import argparse
@@ -96,14 +96,15 @@ def main():
     parser.add_argument("--monitor", default="val_policy_loss")
     parser.add_argument("--compile", default=True)
     parser.add_argument("--validation", default=None, help="validation dataset")
+    parser.add_argument("--validation_indices", default=None, help="validation indices")
     args = parser.parse_args()
 
 
     if args.validation:
         csv_path = (args.dataset).replace("npz", "csv")
-        with open("validation_selected_indices.json", "r", encoding="utf-8") as f:
+        with open(args.validation_indices, "r", encoding="utf-8") as f:
             indices = json.load(f)
-        this_ind = indices[csv_path]
+        this_ind = indices.get(csv_path)
 
     X_boards, X_eloside, y, y_value, _, legal_indices = load_npz_dataset(args.dataset)
     N = X_boards.shape[0]
@@ -125,23 +126,27 @@ def main():
         model.optimizer.learning_rate.assign(args.lr)
 
     if args.validation:        
+        if this_ind:
+            Xb_train, Xe_train, y_train, yv_train, Li_train = [], [], [], [], []
+            for i in range(N):
+                if i not in this_ind:
+                    Xb_train.append(X_boards[i])
+                    Xe_train.append(X_eloside[i])
+                    y_train.append(y[i])
+                    yv_train.append(y_value[i])
+                    Li_train.append(legal_indices[i])
+
+            Xb_train = np.array(Xb_train, dtype=np.uint8)
+            Xe_train = np.array(Xe_train, dtype=np.float32)
+            y_train = np.array(y_train, dtype=np.int32)
+            yv_train = np.array(yv_train, dtype=np.float32)
+            Li_train = np.array(Li_train, dtype=np.uint8)
+
+            train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+        else:
+            train_ds = make_tf_dataset(X_boards, X_eloside, y, y_value, legal_indices, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
+            
         X_boards_val, X_eloside_val, y_val, y_value_val, _, legal_indices_val = load_npz_dataset(args.validation)
-
-        Xb_train, Xe_train, y_train, yv_train, Li_train = [], [], [], [], []
-        for i in range(N):
-            if i not in this_ind:
-                Xb_train.append(X_boards[i])
-                Xe_train.append(X_eloside[i])
-                y_train.append(y[i])
-                yv_train.append(y_value[i])
-                Li_train.append(legal_indices[i])
-        Xb_train = np.array(Xb_train, dtype=np.uint8)
-        Xe_train = np.array(Xe_train, dtype=np.float32)
-        y_train = np.array(y_train, dtype=np.int32)
-        yv_train = np.array(yv_train, dtype=np.float32)
-        Li_train = np.array(Li_train, dtype=np.uint8)
-
-        train_ds = make_tf_dataset(Xb_train, Xe_train, y_train, yv_train, Li_train, batch_size=args.batch_size, shuffle=True, alpha=args.alpha)
         val_ds = make_tf_dataset(X_boards_val, X_eloside_val, y_val, y_value_val, legal_indices_val, batch_size=args.batch_size, shuffle=False, alpha=args.alpha)
     else:
         idx = np.arange(N)

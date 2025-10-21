@@ -2,6 +2,7 @@
 *.pgn.zst
 *.pgn
 *.zst
+*.csv
 
 # File temporanei / ambienti
 __pycache__/
@@ -12,12 +13,15 @@ venv/
 .env/
 .idea/
 .vscode/
+
+# File particolari
 all_positions_jul2014_csv
 all_positions_jul2014_npz
 a_lot_positions_jul2014.csv
 positions_for_vocabulary_jul2014.csv
 model_versions
-model_versions_V2
+results_V*
+chat.txt
 
 # File di sistema
 .DS_Store

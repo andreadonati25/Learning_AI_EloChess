@@ -11,8 +11,6 @@ Legge CSV con colonne minime:
 
 Usage example:
     python csv_to_npz_from_fen_all.py all_positions_jul2014_csv/positions_jul2014.csv all_positions_jul2014_npz/positions_jul2014.npz --voc_file positions_for_vocabulary_jul2014.csv --max_games 1048440 --game_split 1500 --max_file 699
-
-    with --voc_file positions_for_vocabulary_jul2014.csv 1929 / 1968 moves
 """
 
 import argparse, json
@@ -164,6 +162,7 @@ def main():
     parser.add_argument("--game_split", type=int, default=None, help="number of games in ogni file in input")
     parser.add_argument("--max_games", type=int, default=None, help="max number of games in totale")
     parser.add_argument("--max_file", type=int, default=1000, help="Numero massimo di file da processare")
+    parser.add_argument("--start", type=int, default=1, help="File number to start")
     args = parser.parse_args()
 
     if args.json:
@@ -182,7 +181,7 @@ def main():
     base_in = os.path.splitext(args.csv_in)[0]  # es: all_positions_jul2014_csv/positions_jul2014
     base_out = os.path.splitext(args.out_npz)[0]  # es: all_positions_jul2014_npz/positions_jul2014_npz
 
-    start = 1
+    start = 1 + (args.start - 1) * args.game_split
     batch = 1
     while batch <= args.max_file:
         end = min(start + args.game_split - 1, args.max_games)
